@@ -16,8 +16,7 @@ server.get( '/user', ( req, res ) => {
         { name: "Jane Williams", username: "jwilliams" },
         { name: "Robert Brown",  username: "rbrown"    },
     ];
-    res.setHeader('Content-Type', 'application/json');
-    res.send( JSON.stringify( users ) );
+    res.json( users );
 } );
 
 // start Express.js server
