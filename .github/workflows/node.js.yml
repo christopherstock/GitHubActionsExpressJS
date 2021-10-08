@@ -71,6 +71,7 @@ jobs:
 
   upload-data-job:
     name: Upload data to artifact
+    needs: release-production
     runs-on: ubuntu-latest
     steps:
       - shell: bash
