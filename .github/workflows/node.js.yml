@@ -94,6 +94,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: hello-world
+          path: hello-world/hello-world.txt
       - shell: bash
         run: |
           value=`cat hello-world/hello-world.txt`
@@ -102,7 +103,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: hello-world
-          path: hello-world.txt
+          path: hello-world/hello-world.txt
 
   conditional-job:
     name: Only executed if upload job succeeded
