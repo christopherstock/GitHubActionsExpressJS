@@ -21,7 +21,6 @@ jobs:
         os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
 
     steps:
-
     - uses: actions/checkout@v2
 
     - name: Print a greeting
@@ -46,27 +45,21 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 13.x, 14.x, 15.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
     - name: Debug Output
       run: |
         echo npm is now installing ..
-
     - run: npm install
-
     - name: Debug Output
       run: |
         echo npm is invoking target 'release'
-
     - run: npm run release
 
   upload-data-job:
@@ -78,7 +71,6 @@ jobs:
       - shell: bash
         run: |
           echo Hello World! > hello-world/hello-world.txt
-
       - name: Upload hello world file
         uses: actions/upload-artifact@v1
         with:
@@ -96,21 +88,10 @@ jobs:
           name: hello-world
           path: hello-world/hello-world.txt
 
-#      - shell: bash
-#        run: |
-#          value=`cat hello-world/hello-world.txt`
-#          echo $value > hello-world/hello-world.txt
-
-#      - name: Upload hello world to artifact
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: hello-world
-#          path: hello-world/hello-world.txt
-
   conditional-job:
     name: Only executed if upload job succeeded
     needs: upload-data-job
     runs-on: windows-latest
     steps:
     - name: Print a message
-      run: This conditional job is doing nothing!
+      run: echo The releae pipeline has been completed!
