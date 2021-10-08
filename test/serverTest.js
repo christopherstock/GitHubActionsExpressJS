@@ -3,9 +3,11 @@ const chai    = require( 'chai'      );
 
 describe( 'request Express.js server app', () => {
     let server;
+
     beforeEach( () => {
         server = require( '../src/server' );
     } );
+
     afterEach( ( done ) => {
         server.close();
         done();
