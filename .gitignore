@@ -7,5 +7,5 @@
 # node.js packages
 node_modules/
 
-# TypeScript compile output
-bin/
+# webpack output
+public/

@@ -6,7 +6,8 @@
   "main": "src/js/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "mocha test/serverTest.js"
+    "test": "mocha test/serverTest.js",
+    "webpack": "webpack --mode=development"
   },
   "dependencies": {
     "express": "^4.16.1"
@@ -14,6 +15,8 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "mocha": "^9.1.2",
-    "supertest": "^6.1.6"
+    "supertest": "^6.1.6",
+    "webpack": "4.41.6",
+    "webpack-cli": "3.3.10"
   }
 }
