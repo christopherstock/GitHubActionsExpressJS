@@ -29,7 +29,13 @@ curl -v http://0.0.0.0:8181/user
 ```
 
 ## Integration Tests
-This will invoke the Mocha test runner:
+This will invoke the Mocha test runner and invoke all integration tests:
 ```
 npm test
+```
+
+## Build Release Artefact
+This will invoke **webpack** and create the app release bundle:
+```
+npm run webpack
 ```
