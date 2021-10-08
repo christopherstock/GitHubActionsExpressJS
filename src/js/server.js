@@ -7,21 +7,24 @@ const HOST = '0.0.0.0';
 const server = express();
 
 // specify routes
-server.get('/', (req, res) => {
-    res.send( 'Hello World. This is the result from the base route.' );
-});
-server.get('/user', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.send(
-        JSON.stringify(
-            [
-                { name: "John Smith",    username: "jsmith"    },
-                { name: "Jane Williams", username: "jwilliams" },
-                { name: "Robert Brown",  username: "rbrown"    },
-            ]
-        )
-    );
-});
+server.get(
+    '/',
+    ( req, res ) => {
+        res.send( 'Hello World. This is the result from the base route.' );
+    }
+);
+server.get(
+    '/user',
+    ( req, res ) => {
+        const users = [
+            { name: "John Smith",    username: "jsmith"    },
+            { name: "Jane Williams", username: "jwilliams" },
+            { name: "Robert Brown",  username: "rbrown"    },
+        ];
+        res.setHeader('Content-Type', 'application/json');
+        res.send( JSON.stringify( users ) );
+    }
+);
 
 // start Express.js server
 server.listen( PORT, HOST );

@@ -19,7 +19,7 @@ http://0.0.0.0:8181
 http://0.0.0.0:8181/user
 ```
 
-Or perform a request using cURL:
+Or perform a request using **cURL**:
 ```
 curl -v http://0.0.0.0:8181
 curl -v http://0.0.0.0:8181/user
