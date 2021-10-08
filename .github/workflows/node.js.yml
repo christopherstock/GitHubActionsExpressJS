@@ -1,19 +1,19 @@
 name: CI/CD for Express.js app (Node.js)
 
 on:
+
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
 jobs:
-  testsOnly:
 
+  run-tests:
     name: Test Express.js REST-API
     runs-on: ${{ matrix.os }}
     env:
       CI: true
-
     strategy:
       matrix:
         node-version: [12.x, 13.x, 14.x, 15.x, 16.x]
@@ -36,9 +36,9 @@ jobs:
     - run: npm install
     - run: npm test
 
-  testRelease:
-
+  release-production:
     name: Release Production Build
+    needs: run-tests
     runs-on: ubuntu-latest
     env:
       CI: true
