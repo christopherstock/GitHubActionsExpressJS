@@ -95,15 +95,17 @@ jobs:
         with:
           name: hello-world
           path: hello-world/hello-world.txt
-      - shell: bash
-        run: |
-          value=`cat hello-world/hello-world.txt`
-          echo $value > hello-world/hello-world.txt
-      - name: Upload hello world to artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: hello-world
-          path: hello-world/hello-world.txt
+
+#      - shell: bash
+#        run: |
+#          value=`cat hello-world/hello-world.txt`
+#          echo $value > hello-world/hello-world.txt
+
+#      - name: Upload hello world to artifact
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: hello-world
+#          path: hello-world/hello-world.txt
 
   conditional-job:
     name: Only executed if upload job succeeded
