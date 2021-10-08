@@ -1,26 +1,23 @@
 const express = require( 'express' );
 
-const startServer = ( PORT = 8181, HOST = '0.0.0.0' ) => {
-    const server = express();
+const PORT = 8181;
+const HOST = '0.0.0.0';
 
-    server.get( '/', ( req, res ) => {
-        res.send( 'Hello World. This is the result from the base route.' );
-    } );
-    server.get( '/user', ( req, res ) => {
-        const users = [
-            { name: "John Smith",    username: "jsmith"    },
-            { name: "Jane Williams", username: "jwilliams" },
-            { name: "Robert Brown",  username: "rbrown"    },
-        ];
-        res.json( users );
-    } );
+const server = express();
 
-    console.log( `Start Express.js server on http://${HOST}:${PORT}` );
+server.get( '/', ( req, res ) => {
+    res.send( 'Hello World. This is the result from the base route.' );
+} );
+server.get( '/user', ( req, res ) => {
+    const users = [
+        { name: "John Smith",    username: "jsmith"    },
+        { name: "Jane Williams", username: "jwilliams" },
+        { name: "Robert Brown",  username: "rbrown"    },
+    ];
+    res.json( users );
+} );
 
-    return server.listen( PORT, HOST );
-};
+console.log( `Start Express.js server on http://${HOST}:${PORT}` );
 
-const server = startServer();
-
-// export server to outside modules
-module.exports = server;
+// export listening server to outside modules
+module.exports = server.listen( PORT, HOST );
