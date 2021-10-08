@@ -39,3 +39,10 @@ This will invoke **webpack** and create the app release bundle:
 ```
 npm run webpack
 ```
+
+# Possible additional targets?
+```
+"typedoc:generate": "typedoc --out doc --listInvalidSymbolLinks --name \"Coding Ninjas II - Back with a Vengeance, (c) 2020 Mayflower GmbH\" src/typescript",
+"eslint:check": "eslint \"src/**/*.{ts,tsx}\"",
+"test:jest-coverage": "jest --coverage"
+```
