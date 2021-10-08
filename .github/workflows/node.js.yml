@@ -9,7 +9,7 @@ on:
 jobs:
   testsOnly:
 
-    name: REST-API Tests
+    name: Test Express.js REST-API (Mocha)
     runs-on: ${{ matrix.os }}
     env:
       CI: true
@@ -38,7 +38,7 @@ jobs:
 
   testRelease:
 
-    name: Production Release (Webpack)
+    name: Release to Production (Webpack)
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -57,10 +57,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - name: Print a greeting
+    - name: Debug Output
       run: |
-        echo Hello there!
+        echo npm is now installing ..
 
     - run: npm install
+
+    - name: Debug Output
+      run: |
+        echo npm is invoking target 'release'
 
     - run: npm run release
