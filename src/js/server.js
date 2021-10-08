@@ -1,6 +1,3 @@
-// console.log('Servus Express App!');
-// 'use strict';
-
 const express = require('express');
 
 const PORT = 8181;
@@ -16,7 +13,13 @@ server.get('/', (req, res) => {
 server.get('/user', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(
-        '[{name:"John Doe", username:"jdoe"}]'
+        JSON.stringify(
+            [
+                { name: "John Smith",    username: "jsmith"    },
+                { name: "Jane Williams", username: "jwilliams" },
+                { name: "Robert Brown",  username: "rbrown"    },
+            ]
+        )
     );
 });
 
