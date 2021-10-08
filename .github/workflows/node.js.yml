@@ -62,6 +62,8 @@ jobs:
         echo npm is invoking target 'release'
     - run: npm run release
 
+  # TODO upload JS build artefact here!
+
   upload-data-job:
     name: Upload data to artifact
     needs: release-production
@@ -90,7 +92,7 @@ jobs:
 
   conditional-job:
     name: Only executed if upload job succeeded
-    needs: upload-data-job
+    needs: download-data-job
     runs-on: windows-latest
     steps:
     - name: Print a message

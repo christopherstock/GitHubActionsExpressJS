@@ -37,7 +37,7 @@ npm test
 ## Build Release Artefact
 This will invoke **webpack** and create the app release bundle:
 ```
-npm run webpack
+npm run release
 ```
 
 # Possible additional targets?
@@ -46,3 +46,5 @@ npm run webpack
 "eslint:check": "eslint \"src/**/*.{ts,tsx}\"",
 "test:jest-coverage": "jest --coverage"
 ```
+
+# 

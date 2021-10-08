@@ -1,8 +1,10 @@
+const version = '1.0.0';
+
 module.exports = ( env, argv ) => {
     let config = {
         entry: './src/server.js',
         output: {
-            filename: 'server-v1.0.0.js',
+            filename: 'server-v' + version + '.js',
             path: __dirname + '/public/'
         },
         resolve: {
