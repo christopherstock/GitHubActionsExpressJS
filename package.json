@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "mocha test/serverTest.js",
-    "webpack": "webpack --mode=development"
+    "release": "webpack --mode=production"
   },
   "dependencies": {
     "express": "^4.16.1"

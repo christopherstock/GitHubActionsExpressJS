@@ -14,9 +14,14 @@ module.exports = ( env, argv ) => {
         target: 'node'
     };
 
-    // enable sourcemaps for debugging webpack's output.
     if ( argv.mode === 'development' ) {
         config.devtool = 'source-map';
+    }
+
+    if ( argv.mode === 'production' ) {
+        config.optimization = {
+            minimize: true
+        };
     }
 
     config.module = {
