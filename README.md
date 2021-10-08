@@ -12,7 +12,7 @@ npm install
 npm start
 ```
 
-## Request
+## UI Tests
 Open your browser on these two routes:
 ```
 http://0.0.0.0:8181
@@ -25,3 +25,8 @@ curl -v http://0.0.0.0:8181
 curl -v http://0.0.0.0:8181/user
 ```
 
+## Integration Tests
+This will invoke the Mocha test runner:
+```
+npm test
+```

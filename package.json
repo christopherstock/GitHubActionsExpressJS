@@ -5,8 +5,8 @@
   "author": "Christopher Stock <christopher.stock@mayflower.de>",
   "main": "src/js/server.js",
   "scripts": {
-    "start": "node src/js/server.js",
-    "test": "mocha src/test/serverTest.js"
+    "start": "node src/server.js",
+    "test": "mocha test/serverTest.js"
   },
   "dependencies": {
     "express": "^4.16.1"
