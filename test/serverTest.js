@@ -1,6 +1,8 @@
-var request = require('supertest');
-describe('loading express', function () {
-    var server;
+const request = require( 'supertest' );
+const chai    = require( 'chai'      );
+
+describe( 'Express.js server app', () => {
+    let server;
     beforeEach(function () {
         server = require('../src/server.js');
     });
@@ -21,17 +23,22 @@ describe('loading express', function () {
             .get('/user')
             .set('Content-Type', 'application/json')
             .expect('Content-Type', /json/)
-            .expect(200, function (err, res) {
+            .expect(200, ( err, res ) => {
                 if (err) {
                     return done(err);
                 }
-                const callStatus = res.body.goodCall;
+                const callStatus = res.body;
 
-                // expect(callStatus, 'tester');
+                chai.expect( callStatus ).to.deep.equal(
+                    [
+                        { name: "John Smith",    username: "jsmith"    },
+                        { name: "Jane Williams", username: "jwilliams" },
+                        { name: "Robert Brown",  username: "rbrown"    },
+                    ]
+                );
 
-                // Done
                 done();
-            });
+            } );
 
     });
 

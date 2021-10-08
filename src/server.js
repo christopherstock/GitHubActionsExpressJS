@@ -15,12 +15,12 @@ const startServer = ( PORT = 8181, HOST = '0.0.0.0' ) => {
         res.json( users );
     } );
 
-    console.log( `Server listening on http://${HOST}:${PORT}` );
+    console.log( `Start Express.js server on http://${HOST}:${PORT}` );
 
     return server.listen( PORT, HOST );
 };
 
-const serverApp = startServer();
+const server = startServer();
 
-// make startServer function availabhle to the outside
-module.exports = serverApp;
+// export server to outside modules
+module.exports = server;
