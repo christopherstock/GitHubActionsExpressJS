@@ -1,6 +1,9 @@
 # GitHub Actions
 This app will demonstrate a CI/CD setup with GitHub Actions.
 
+# CI/CD Pipeline State
+![Pipeline State](https://github.com/christopherstock/GitHubActionsExpressJS/actions/workflows/node.js.yml/badge.svg)
+
 ## Install
 Install all Node.js packages for this project
 ```
