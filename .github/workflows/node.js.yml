@@ -12,6 +12,7 @@ on:
 jobs:
   testsOnly:
 
+    name: Lediglich die Tests
     runs-on: ubuntu-latest
 
     strategy:
@@ -30,8 +31,9 @@ jobs:
     - run: npm install
     - run: npm test
 
-  testBuildRelease:
+  testRelease:
 
+    name: Tests und Webpack-Release
     runs-on: ubuntu-latest
 
     strategy:
