@@ -1,0 +1,13 @@
+{
+  "name": "github_actions_express.js",
+  "version": "1.0.0",
+  "description": "Demonstrates CI/CD for a Node.js REST-API with express.js",
+  "author": "Christopher Stock <christopher.stock@mayflower.de>",
+  "main": "src/js/server.js",
+  "scripts": {
+    "start": "node src/js/server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
