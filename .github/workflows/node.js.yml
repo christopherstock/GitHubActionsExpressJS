@@ -30,9 +30,4 @@ jobs:
     - run: npm install
 
     - run: npm test
-    - run: npm webpack
-
-    # - run: npm run eslint:check
-    # - run: npm run test:jest
-    # - run: npm run test:jest-coverage
-    # - run: npm run typedoc:generate
+    - run: npm run webpack
