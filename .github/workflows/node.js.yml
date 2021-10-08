@@ -48,6 +48,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Print a greeting
+      run: |
+        echo Hello there!
 
     - run: npm install
 
