@@ -9,7 +9,7 @@ on:
 jobs:
   testsOnly:
 
-    name: Test Express.js REST-API (Mocha)
+    name: Test Express.js REST-API
     runs-on: ${{ matrix.os }}
     env:
       CI: true
@@ -38,7 +38,7 @@ jobs:
 
   testRelease:
 
-    name: Release to Production (Webpack)
+    name: Release Production Build
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -100,3 +100,11 @@ jobs:
         with:
           name: hello-world
           path: hello-world.txt
+
+  conditional-job:
+    name: Only executed if upload job succeeded
+    needs: upload-data-job
+    runs-on: windows-latest
+    steps:
+    - name: Print a message
+      run: This conditional job is doing nothing!
