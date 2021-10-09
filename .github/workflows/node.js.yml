@@ -56,13 +56,18 @@ jobs:
     - name: Debug Output
       run: |
         echo npm is now installing ..
-    - run: npm install
+    - name: Install npm packages
+      run: npm install
     - name: Debug Output
       run: |
         echo npm is invoking target 'release'
-    - run: npm run release
-
-
+    - name: Build Production Release
+      run: npm run release
+    - name: Upload Release Artefact
+      uses: actions/upload-artifact@v1
+      with:
+        name: server-v1.0.0
+        path: public/server-v1.0.0.js
 
   # TODO upload JS build artefact here!
 
