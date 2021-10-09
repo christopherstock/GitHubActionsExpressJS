@@ -7,5 +7,5 @@
 # node.js packages
 node_modules/
 
-# webpack output
+# generated output (webpack, mocha test report, ..)
 public/

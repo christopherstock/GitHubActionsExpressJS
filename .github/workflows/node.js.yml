@@ -34,6 +34,12 @@ jobs:
 
     - run: npm install
     - run: npm test
+    - run: npm run testReport
+    - name: Upload Test Report Artefact
+      uses: actions/upload-artifact@v1
+      with:
+        name: testReport-v1.0.0
+        path: public/test-report.html
 
   release-production:
     name: Release Production Build
@@ -68,59 +74,3 @@ jobs:
       with:
         name: server-v1.0.0
         path: public/server-v1.0.0.js
-
-  # TODO upload JS build artefact here!
-
-  upload-production-release:
-    name: Upload production build to artifact
-    needs: release-production
-    runs-on: ubuntu-latest
-    steps:
-      # - run: mkdir -p public
-      - shell: bash
-        run: |
-          echo Test Text! > public2.txt
-      - name: Upload hello world file
-        uses: actions/upload-artifact@v1
-        with:
-          name: public3
-          path: public2.txt
-      - name: POSSIBLY FAILS - Upload Release Artefact
-        uses: actions/upload-artifact@v1
-        with:
-          name: server-v1.0.0
-          path: public/server-v1.0.0.js
-
-  upload-data-job:
-    name: Upload data to artifact
-    needs: release-production
-    runs-on: ubuntu-latest
-    steps:
-      - run: mkdir -p hello-world
-      - shell: bash
-        run: |
-          echo Hello World! > hello-world/hello-world.txt
-      - name: Upload hello world file
-        uses: actions/upload-artifact@v1
-        with:
-          name: hello-world
-          path: hello-world/hello-world.txt
-
-  download-data-job:
-    name: Download data from artifact
-    needs: upload-data-job
-    runs-on: windows-latest
-    steps:
-      - name: Download hello world file
-        uses: actions/download-artifact@v1
-        with:
-          name: hello-world
-          path: hello-world/hello-world.txt
-
-  conditional-job:
-    name: Only executed if upload job succeeded
-    needs: download-data-job
-    runs-on: windows-latest
-    steps:
-    - name: Print a message
-      run: echo The releae pipeline has been completed!

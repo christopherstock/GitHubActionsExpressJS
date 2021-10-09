@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "mocha test/serverTest.js",
+    "testReport": "mocha --report doc test/serverTest.js > public/test-report.html",
     "release": "webpack --mode=production"
   },
   "dependencies": {
