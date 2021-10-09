@@ -1,10 +1,11 @@
-// TODO rename public to dist ??
 // TODO version constant into pipeline yml ?
+// TODO prune mocha and supertest libs?
+// TODO Auto-Release in GitHub
+// TODO Release if push on release branch occurs.
 // TODO docker container? Dockerfile + docker-compose
 // TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
-// TODO Add tests to linter scan!
 // TODO cache npm install ??
-// TODO prune mocha and supertest libs?
+// TODO test all targets local ??
 
 const express = require( 'express' );
 
