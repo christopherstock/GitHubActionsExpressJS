@@ -68,7 +68,7 @@ jobs:
         cache: 'npm'
 
     - run: npm install
-    - run: npm eslint
+    - run: npm run eslint
 
     # - run: mkdir -p public
     # - run: npm run eslintReport
