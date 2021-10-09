@@ -9,6 +9,13 @@ module.exports = {
         node: true,
     },
     rules: {
+
+        "consistent-return": 2,
+        "indent"           : [1, 4],
+        "no-else-return"   : 1,
+        "semi"             : [1, "always"],
+        "space-unary-ops"  : 2,
+/*
         camelcase: 'warn',
         complexity: 'off',
         // enable additional rules
@@ -23,5 +30,6 @@ module.exports = {
 
         // disable rules from base configurations
          "for-direction": "off",
+ */
     }
 };
