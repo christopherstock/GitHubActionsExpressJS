@@ -85,6 +85,11 @@ jobs:
         with:
           name: public3
           path: public2.txt
+      - name: POSSIBLY FAILS - Upload Release Artefact
+        uses: actions/upload-artifact@v1
+        with:
+          name: server-v1.0.0
+          path: public/server-v1.0.0.js
 
   upload-data-job:
     name: Upload data to artifact
