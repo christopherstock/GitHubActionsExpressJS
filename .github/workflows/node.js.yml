@@ -111,7 +111,7 @@ jobs:
     - name: Upload Linter Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: lintReport-v1.0.0
+        name: linterReport-v1.0.0
         path: public/linter-report.xml
 
   generate-jsdoc:
@@ -179,5 +179,5 @@ jobs:
     - name: Upload Release Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: server-v1.0.0
+        name: app-bundle-v1.0.0
         path: public/app-bundle.js
