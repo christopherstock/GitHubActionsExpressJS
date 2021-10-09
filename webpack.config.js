@@ -1,10 +1,8 @@
-const version = '1.0.0';
-
 module.exports = ( env, argv ) => {
     let config = {
         entry: './src/server.js',
         output: {
-            filename: 'server-v' + version + '.js',
+            filename: 'app-bundle.js',
             path: __dirname + '/public/'
         },
         resolve: {

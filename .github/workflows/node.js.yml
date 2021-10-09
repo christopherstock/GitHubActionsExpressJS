@@ -180,4 +180,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: server-v1.0.0
-        path: public/server-v1.0.0.js
+        path: public/app-bundle.js
