@@ -64,6 +64,21 @@ jobs:
 
   # TODO upload JS build artefact here!
 
+  upload-production-release:
+    name: Upload production build to artifact
+    needs: release-production
+    runs-on: ubuntu-latest
+    steps:
+      - run: mkdir -p public
+      - shell: bash
+        run: |
+          echo Test Text! > public/public.txt
+      - name: Upload hello world file
+        uses: actions/upload-artifact@v1
+        with:
+          name: public
+          path: public/public.txt
+
   upload-data-job:
     name: Upload data to artifact
     needs: release-production
