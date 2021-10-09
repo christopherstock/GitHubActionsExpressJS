@@ -43,9 +43,43 @@ jobs:
         name: testReport-v1.0.0
         path: public/test-report.xml
 
+  run-linter:
+    name: ESLint on app sourcecode
+    runs-on: ${{ matrix.os }}
+    env:
+      CI: true
+    strategy:
+      matrix:
+        node-version: [12.x] # [12.x, 13.x, 14.x, 15.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Print a greeting
+      run: echo Hello everyone! We are now linting the code ..
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - run: npm install
+    - run: npm eslint
+
+    # - run: mkdir -p public
+    # - run: npm run eslintReport
+    # - name: Upload Test Report Artefact
+    #   uses: actions/upload-artifact@v1
+    #   with:
+    #     name: testReport-v1.0.0
+    #     path: public/test-report.xml
+
   release-production:
     name: Release Production Build
-    needs: run-tests
+    needs: run-linter
     runs-on: ubuntu-latest
     env:
       CI: true

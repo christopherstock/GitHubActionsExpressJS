@@ -6,6 +6,9 @@
   "main": "src/js/server.js",
   "scripts": {
     "start": "node src/server.js",
+
+    "eslint": "eslint \"src/**/*.{js,jsx}\"",
+
     "test": "mocha",
     "testReport": "mocha --reporter xunit --reporter-option output=public/test-report.xml",
     "release": "webpack --mode=production"
@@ -15,6 +18,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.4",
+    "eslint": "^7.32.0",
     "mocha": "^9.1.2",
     "supertest": "^6.1.6",
     "webpack": "4.41.6",
