@@ -70,13 +70,13 @@ jobs:
     - run: npm install
     - run: npm run eslint
 
-    # - run: mkdir -p public
-    # - run: npm run eslintReport
-    # - name: Upload Test Report Artefact
-    #   uses: actions/upload-artifact@v1
-    #   with:
-    #     name: testReport-v1.0.0
-    #     path: public/test-report.xml
+    - run: mkdir -p public
+    - run: npm run eslintReport
+    - name: Upload Linter Report Artefact
+      uses: actions/upload-artifact@v1
+      with:
+        name: lintReport-v1.0.0
+        path: public/linter-report.xml
 
   release-production:
     name: Release Production Build

@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node src/server.js",
     "eslint": "eslint \"src/**/*.{js,jsx}\"",
-    "eslintReport": "eslint --format junit -o public/lint-report.xml \"src/**/*.{js,jsx}\"",
+    "eslintReport": "eslint --format junit -o public/linter-report.xml \"src/**/*.{js,jsx}\"",
     "test": "mocha",
     "testReport": "mocha --reporter xunit --reporter-option output=public/test-report.xml",
     "release": "webpack --mode=production"
