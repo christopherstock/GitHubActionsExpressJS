@@ -1,8 +1,9 @@
 // TODO flag build as yellow/warning ??
 // TODO rename public to dist ??
 // TODO rename server-v1.0.0.js to bundle.js ??
-// TODO jsdoc
+// TODO docker container? Dockerfile + docker-compose
 // TODO jest
+// TODO version constant into pipeline yml ?
 // TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
 // TODO Add tests to linter scan!
 // TODO cache npm install ??

@@ -10,7 +10,7 @@ on:
 jobs:
 
   run-tests:
-    name: Test Express.js REST-API
+    name: Test Mocha Express.js REST-API
     runs-on: ${{ matrix.os }}
     env:
       CI: true
@@ -43,9 +43,45 @@ jobs:
         name: testReport-v1.0.0
         path: public/test-report.xml
 
+  run-jest-tests:
+    name: Test Jest Express.js REST-API
+    needs: run-tests
+    runs-on: ${{ matrix.os }}
+    env:
+      CI: true
+    strategy:
+      matrix:
+        node-version: [12.x] # [12.x, 13.x, 14.x, 15.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Print a greeting
+      run: echo Hello everyone! We are executing all JEST tests here!
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - run: npm install
+    - run: npm run jest
+
+    - run: mkdir -p public
+    - run: npm run jestCoverage
+
+    - name: Upload Test Coverage Report Artefact
+      uses: actions/upload-artifact@v1
+      with:
+        name: testCoverage-v1.0.0
+        path: public/coverage
+
   run-linter:
     name: ESLint on app sourcecode
-    needs: run-tests
+    needs: run-jest-tests
     runs-on: ${{ matrix.os }}
     env:
       CI: true
