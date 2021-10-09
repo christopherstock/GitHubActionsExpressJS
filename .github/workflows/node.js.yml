@@ -78,6 +78,40 @@ jobs:
         name: lintReport-v1.0.0
         path: public/linter-report.xml
 
+  generate-jsdoc:
+    name: JSDoc generation on app sourcecode
+    needs: run-linter
+    runs-on: ${{ matrix.os }}
+    env:
+      CI: true
+    strategy:
+      matrix:
+        node-version: [12.x] # [12.x, 13.x, 14.x, 15.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Print a greeting
+      run: echo Hello everyone! We are now generating JSDoc documentation for all JavaScript source codes ..
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - run: npm install
+    - run: mkdir -p public
+    - run: npm run jsdoc
+
+    - name: Upload JSDoc documentation
+      uses: actions/upload-artifact@v1
+      with:
+        name: jsdoc-v1.0.0
+        path: public/jsdoc
+
   release-production:
     name: Release Production Build
     needs: run-linter

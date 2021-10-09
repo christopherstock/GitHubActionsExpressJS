@@ -3,12 +3,18 @@
 // TODO rename server-v1.0.0.js to bundle.js ??
 // TODO jsdoc
 // TODO jest
+// TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
+// TODO Add tests to linter scan!
+// TODO cache npm install ??
 
 const express = require( 'express' );
 
-const PORT = 8181;
+/** The host address to listen on incoming requests. */
 const HOST = '0.0.0.0';
+/** The port to listen on incoming requests. */
+const PORT = 8181;
 
+/** Stores the Express.js lib object. */
 const server = express();
 
 server.get( '/', ( req, res ) => {

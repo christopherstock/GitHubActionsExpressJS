@@ -10,7 +10,8 @@
     "eslintReport": "eslint --format junit -o public/linter-report.xml \"src/**/*.{js,jsx}\"",
     "test": "mocha",
     "testReport": "mocha --reporter xunit --reporter-option output=public/test-report.xml",
-    "release": "webpack --mode=production"
+    "release": "webpack --mode=production",
+    "jsdoc": "jsdoc src/*.js --destination public/jsdoc"
   },
   "dependencies": {
     "express": "^4.16.1"
@@ -18,6 +19,7 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "eslint": "^7.32.0",
+    "jsdoc": "^3.6.7",
     "mocha": "^9.1.2",
     "supertest": "^6.1.6",
     "webpack": "4.41.6",
