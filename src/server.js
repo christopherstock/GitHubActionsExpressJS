@@ -1,3 +1,9 @@
+// TODO flag build as yellow/warning ??
+// TODO rename public to dist ??
+// TODO rename server-v1.0.0.js to bundle.js ??
+// TODO jsdoc
+// TODO jest
+
 const express = require( 'express' );
 
 const PORT = 8181;
