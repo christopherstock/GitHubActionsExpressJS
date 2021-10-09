@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: testReport-v1.0.0
-        path: public/test-report.html
+        path: public/test-report.xml
 
   release-production:
     name: Release Production Build
