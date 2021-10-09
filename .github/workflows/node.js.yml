@@ -34,6 +34,8 @@ jobs:
 
     - run: npm install
     - run: npm test
+
+    - run: mkdir -p public
     - run: npm run testReport
     - name: Upload Test Report Artefact
       uses: actions/upload-artifact@v1
