@@ -6,8 +6,8 @@
   "main": "src/js/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "mocha test/serverTest.js",
-    "testReport": "mocha --report doc test/serverTest.js > public/test-report.html",
+    "test": "mocha",
+    "testReport": "mocha --reporter xunit --reporter-option output=public/test-report.html",
     "release": "webpack --mode=production"
   },
   "dependencies": {
