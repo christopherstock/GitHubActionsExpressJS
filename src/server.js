@@ -10,9 +10,9 @@ server.get( '/', ( req, res ) => {
 } );
 server.get( '/user', ( req, res ) => {
     const users = [
-        { name: "John Smith",    username: "jsmith"    },
-        { name: "Jane Williams", username: "jwilliams" },
-        { name: "Robert Brown",  username: "rbrown"    },
+        { name: 'John Smith',    username: 'jsmith'    },
+        { name: 'Jane Williams', username: 'jwilliams' },
+        { name: 'Robert Brown',  username: 'rbrown'    },
     ];
     res.json( users );
 } );

@@ -45,6 +45,7 @@ jobs:
 
   run-linter:
     name: ESLint on app sourcecode
+    needs: run-tests
     runs-on: ${{ matrix.os }}
     env:
       CI: true
