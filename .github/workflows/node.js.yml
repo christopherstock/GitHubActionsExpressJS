@@ -179,7 +179,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # provided by GitHub Actions - no need to set manually
       with:
         tag_name: ${{ env.release-version }}-${{ github.run_id }}
-        release_name: Release v${{ env.release-version }}-${{ github.run_id }}
+        release_name: Release v${{ env.release-version }}
         body: |
           Feature Changelist:
           - This list could be specified
