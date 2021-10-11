@@ -76,7 +76,7 @@ jobs:
 
   generate-jsdoc:
     name: JSDoc generation on app sourcecode
-    needs: [run-mocha-tests, run-jest-tests, run-linter]
+    needs: [run-jest-tests, run-linter]
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
