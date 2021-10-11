@@ -181,11 +181,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # provided by GitHub Actions - no need to set manually
       with:
-        tag_name: ${{ env.version }}
-        release_name: Release v${{ env.version }}
+        tag_name: ${{ env.release-version }}
+        release_name: Release v${{ env.release-version }}
         body: |
           Feature Changelist:
           - This list could be specified
           - .. on top of the pipeline?
         draft: false
         prerelease: false
+        allow_duplicate: true
