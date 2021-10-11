@@ -8,7 +8,6 @@ on:
     branches: [ main ]
 
 env:
-
   version: "3.0.0"
 
 jobs:
@@ -16,8 +15,6 @@ jobs:
   run-mocha-tests:
     name: Test Mocha Express.js REST-API
     runs-on: ${{ matrix.os }}
-    env:
-      CI: true
     strategy:
       matrix:
         node-version: [12.x] # [12.x, 13.x, 14.x, 15.x, 16.x]
@@ -50,8 +47,6 @@ jobs:
   run-jest-tests:
     name: Test Jest Express.js REST-API
     runs-on: ${{ matrix.os }}
-    env:
-      CI: true
     strategy:
       matrix:
         node-version: [12.x] # [12.x, 13.x, 14.x, 15.x, 16.x]
@@ -85,8 +80,6 @@ jobs:
   run-linter:
     name: ESLint on app sourcecode
     runs-on: ${{ matrix.os }}
-    env:
-      CI: true
     strategy:
       matrix:
         node-version: [12.x] # [12.x, 13.x, 14.x, 15.x, 16.x]
@@ -120,8 +113,6 @@ jobs:
     name: JSDoc generation on app sourcecode
     needs: [run-mocha-tests, run-jest-tests, run-linter]
     runs-on: ${{ matrix.os }}
-    env:
-      CI: true
     strategy:
       matrix:
         node-version: [12.x] # [12.x, 13.x, 14.x, 15.x, 16.x]
@@ -154,9 +145,6 @@ jobs:
     name: Create and Release Production Build
     needs: generate-jsdoc
     runs-on: ubuntu-latest
-    env:
-      CI: true
-
     strategy:
       matrix:
         node-version: [12.x] # [12.x, 13.x, 14.x, 15.x, 16.x]
@@ -173,13 +161,31 @@ jobs:
         echo npm is now installing ..
     - name: Install npm packages
       run: npm install
+
     - name: Debug Output
       run: |
         echo npm is invoking target 'release'
+
     - name: Build Production Release
       run: npm run release
+
     - name: Upload Release Artefact
       uses: actions/upload-artifact@v1
       with:
         name: app-bundle-v${{ env.version }}
         path: public/app-bundle.js
+
+    - name: Create GitHub Release Item
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # provided by GitHub Actions - no need to set manually
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          Feature Changelist:
+          - This list could be specified
+          - .. on top of the pipeline?
+        draft: false
+        prerelease: false
