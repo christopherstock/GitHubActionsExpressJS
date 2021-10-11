@@ -8,7 +8,7 @@ on:
     branches: [ main ]
 
 env:
-  version: "3.0.0"
+  release-version: "1.0.0"
 
 jobs:
 
@@ -41,7 +41,7 @@ jobs:
     - name: Upload Test Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: testReport-v${{ env.version }}
+        name: testReport-v${{ env.release-version }}
         path: public/test-report.xml
 
   run-jest-tests:
@@ -74,7 +74,7 @@ jobs:
     - name: Upload Test Coverage Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: testCoverage-v${{ env.version }}
+        name: testCoverage-v${{ env.release-version }}
         path: public/coverage
 
   run-linter:
@@ -106,7 +106,7 @@ jobs:
     - name: Upload Linter Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: linterReport-v${{ env.version }}
+        name: linterReport-v${{ env.release-version }}
         path: public/linter-report.xml
 
   generate-jsdoc:
@@ -138,7 +138,7 @@ jobs:
     - name: Upload JSDoc documentation
       uses: actions/upload-artifact@v1
       with:
-        name: jsdoc-v${{ env.version }}
+        name: jsdoc-v${{ env.release-version }}
         path: public/jsdoc
 
   build-and-release-production:
@@ -172,7 +172,7 @@ jobs:
     - name: Upload Release Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: app-bundle-v${{ env.version }}
+        name: app-bundle-v${{ env.release-version }}
         path: public/app-bundle.js
 
     - name: Create GitHub Release Item
@@ -181,9 +181,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # provided by GitHub Actions - no need to set manually
       with:
-        id: ${{ github.ref }}_${{ github.run_id }}
-        tag_name: ${{ github.ref }}_${{ github.run_id }}
-        release_name: Release ${{ github.ref }}_${{ github.run_id }}
+        tag_name: ${{ version }}
+        release_name: Release v${{ version }}
         body: |
           Feature Changelist:
           - This list could be specified
