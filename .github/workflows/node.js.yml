@@ -13,7 +13,7 @@ env:
 
 jobs:
 
-  run-tests:
+  run-mocha-tests:
     name: Test Mocha Express.js REST-API
     runs-on: ${{ matrix.os }}
     env:
@@ -49,7 +49,6 @@ jobs:
 
   run-jest-tests:
     name: Test Jest Express.js REST-API
-    needs: run-tests
     runs-on: ${{ matrix.os }}
     env:
       CI: true
@@ -85,7 +84,6 @@ jobs:
 
   run-linter:
     name: ESLint on app sourcecode
-    needs: run-jest-tests
     runs-on: ${{ matrix.os }}
     env:
       CI: true
@@ -120,7 +118,7 @@ jobs:
 
   generate-jsdoc:
     name: JSDoc generation on app sourcecode
-    needs: run-linter
+    needs: [run-mocha-tests, run-jest-tests, run-linter]
     runs-on: ${{ matrix.os }}
     env:
       CI: true
@@ -152,9 +150,9 @@ jobs:
         name: jsdoc-v${{ env.version }}
         path: public/jsdoc
 
-  release-production:
-    name: Release Production Build
-    needs: run-linter
+  build-and-release-production:
+    name: Create and Release Production Build
+    needs: generate-jsdoc
     runs-on: ubuntu-latest
     env:
       CI: true

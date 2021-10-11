@@ -1,4 +1,3 @@
-// TODO run tests and jest on src + test-src !!
 // TODO parallel run for test, jest and linter
 
 // TODO prune mocha tests - replace with jest and create test report
