@@ -183,7 +183,7 @@ jobs:
         body: |
           Feature Changelist:
           - This list could be specified
-          - .. on top of the pipeline?
+          - on top of the pipeline?
         draft: false
         prerelease: false
         allow_duplicate: true
