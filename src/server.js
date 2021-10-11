@@ -1,3 +1,5 @@
+
+
 // TODO version constant into pipeline yml ?
 // TODO prune mocha and supertest libs?
 // TODO Auto-Release in GitHub
@@ -6,6 +8,7 @@
 // TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
 // TODO cache npm install ??
 // TODO test all targets local ??
+// TODO release on event release!
 
 const express = require( 'express' );
 
