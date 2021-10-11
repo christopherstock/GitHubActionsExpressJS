@@ -14,6 +14,28 @@ env:
 
 jobs:
 
+  get-tag-version:
+    name: Pick the version number from git tag
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node-version: [14.18] # [12.x, 13.x, 14.x, 15.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set Release Version from git tag
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      env:
+        release-version: ${ RELEASE_VERSION }
+
+    - name: Print git tag version
+      run: echo "The release version is:${ RELEASE_VERSION }"
+
+    - name: Print env for 'git tag version'
+      run: echo "The release version is:${{ env.release-version }}"
+
   run-unit-tests:
     name: Test Jest Express.js REST-API
     runs-on: ${{ matrix.os }}
@@ -28,12 +50,6 @@ jobs:
 
     - name: Print a greeting
       run: echo Hello everyone! We are executing all JEST tests here!
-
-    - name: Set Release Version from git tag
-      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-
-    - name: Print git tag version
-      run: echo The release version is:${RELEASE_VERSION}
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
