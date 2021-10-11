@@ -146,4 +146,3 @@ jobs:
         allowUpdates: true
         omitBody: true
         removeArtifacts: true
-        # bodyFile: "body.md"
