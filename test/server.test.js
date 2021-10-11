@@ -4,7 +4,7 @@ const chai    = require( 'chai'      );
 describe( 'request Express.js server app', () => {
     let server;
 
-    beforeEach( () => {
+     beforeEach( () => {
         server = require( '../src/server' );
     } );
 

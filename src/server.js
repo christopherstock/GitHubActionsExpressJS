@@ -1,19 +1,21 @@
+// TODO run tests and jest on src + test-src !!
+// TODO parallel run for test, jest and linter
 
-
-// TODO version constant into pipeline yml ?
-// TODO prune mocha and supertest libs?
+// TODO prune mocha tests - replace with jest and create test report
+// TODO release only on event: main + tag v. release! ? Pick version from github string
 // TODO Auto-Release in GitHub
 // TODO Release if push on release branch occurs.
 // TODO docker container? Dockerfile + docker-compose
 // TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
-// TODO cache npm install ??
+// TODO complete documentation for all items!
+
 // TODO test all targets local ??
-// TODO release on event release!
+// TODO cache npm install ??
 
 const express = require( 'express' );
 
 /** The host address to listen on incoming requests. */
-const HOST = '0.0.0.0';
+ const HOST = '0.0.0.0';
 /** The port to listen on incoming requests. */
 const PORT = 8181;
 
