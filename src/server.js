@@ -1,10 +1,9 @@
-// TODO Auto-Release in GitHub
-// TODO complete documentation for all items!
+// TODO Linter: no whitespaces inside all braces!
 // TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
 // TODO prune mocha tests - replace with jest and create test report
 // TODO release only on event: main + tag v. on release branch. Pick version from github tag!
 // TODO docker container? Dockerfile + docker-compose
-
+// TODO separate build/release artefact and GitHub release item to separate job?
 // TODO test all targets local ??
 // TODO cache npm install ??
 
@@ -15,7 +14,7 @@ const HOST = '0.0.0.0';
 /** The port to listen on incoming requests. */
 const PORT = 8181;
 
-/** Stores the Express.js lib object. */
+/** The Express.js server instance. */
 const server = express();
 
 server.get( '/', ( req, res ) => {
@@ -32,5 +31,5 @@ server.get( '/user', ( req, res ) => {
 
 console.log( `Start Express.js server on http://${HOST}:${PORT}` );
 
-// export listening server to outside modules
+// export listening express.JS server instanceto outside modules
 module.exports = server.listen( PORT, HOST );
