@@ -10,7 +10,7 @@ on:
 #    branches: [ main ]
 
 env:
-  release-version: '1.0.0'
+  release-version: '0.0.1'
 
 jobs:
 
@@ -38,6 +38,7 @@ jobs:
 
   run-unit-tests:
     name: Test Jest Express.js REST-API
+    needs: get-tag-version
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -77,6 +78,7 @@ jobs:
 
   run-code-inspection:
     name: ESLint on app sourcecode
+    needs: get-tag-version
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
