@@ -181,8 +181,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # provided by GitHub Actions - no need to set manually
       with:
-        tag_name: ${{ version }}
-        release_name: Release v${{ version }}
+        tag_name: ${{ env.version }}
+        release_name: Release v${{ env.version }}
         body: |
           Feature Changelist:
           - This list could be specified
