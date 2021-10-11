@@ -1,5 +1,5 @@
 module.exports = {
-    extends: "eslint:recommended",
+    extends: 'eslint:recommended',
     parserOptions: {
         ecmaVersion: 2017
     },
@@ -7,9 +7,10 @@ module.exports = {
         es6: true,
         browser: true,
         node: true,
+        jest: true,
     },
     rules: {
-        indent: [ "error", 4 ],
-        quotes: [ "error", "single" ],
+        indent: [ 'error', 4 ],
+        quotes: [ 'error', 'single' ],
     }
 };

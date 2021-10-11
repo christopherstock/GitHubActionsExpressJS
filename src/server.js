@@ -15,7 +15,7 @@
 const express = require( 'express' );
 
 /** The host address to listen on incoming requests. */
- const HOST = '0.0.0.0';
+const HOST = '0.0.0.0';
 /** The port to listen on incoming requests. */
 const PORT = 8181;
 

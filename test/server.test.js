@@ -4,7 +4,7 @@ const chai    = require( 'chai'      );
 describe( 'request Express.js server app', () => {
     let server;
 
-     beforeEach( () => {
+    beforeEach( () => {
         server = require( '../src/server' );
     } );
 
@@ -26,9 +26,9 @@ describe( 'request Express.js server app', () => {
             .expect( 'Content-Type', /json/ )
             .expect( 200, ( err, response ) => {
                 chai.expect( response.body ).to.deep.equal( [
-                    { name: "John Smith",    username: "jsmith"    },
-                    { name: "Jane Williams", username: "jwilliams" },
-                    { name: "Robert Brown",  username: "rbrown"    },
+                    { name: 'John Smith',    username: 'jsmith'    },
+                    { name: 'Jane Williams', username: 'jwilliams' },
+                    { name: 'Robert Brown',  username: 'rbrown'    },
                 ] );
                 done();
             } );
