@@ -28,7 +28,7 @@ jobs:
     - name: Set Release Version from git tag I
       run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     - name: Set Release Version from git tag II
-      run: echo "release-version=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      run: echo "release\-version=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
     - name: Print git tag version
       run: echo "The release version is:${ RELEASE_VERSION }"
