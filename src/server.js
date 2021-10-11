@@ -1,12 +1,9 @@
-// TODO parallel run for test, jest and linter
-
-// TODO prune mocha tests - replace with jest and create test report
-// TODO release only on event: main + tag v. release! ? Pick version from github string
 // TODO Auto-Release in GitHub
-// TODO Release if push on release branch occurs.
-// TODO docker container? Dockerfile + docker-compose
-// TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
 // TODO complete documentation for all items!
+// TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
+// TODO prune mocha tests - replace with jest and create test report
+// TODO release only on event: main + tag v. on release branch. Pick version from github tag!
+// TODO docker container? Dockerfile + docker-compose
 
 // TODO test all targets local ??
 // TODO cache npm install ??
