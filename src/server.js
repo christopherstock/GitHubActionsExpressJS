@@ -7,7 +7,7 @@
 // TODO test all targets local ??
 // TODO cache npm install ??
 
-const express = require( 'express' );
+const express = require('express');
 
 /** The host address to listen on incoming requests. */
 const HOST = '0.0.0.0';
@@ -17,19 +17,19 @@ const PORT = 8181;
 /** The Express.js server instance. */
 const server = express();
 
-server.get( '/', ( req, res ) => {
-    res.send( 'Hello World. This is the result from the base route.' );
-} );
-server.get( '/user', ( req, res ) => {
+server.get('/', (req, res) => {
+    res.send('Hello World. This is the result from the base route.');
+});
+server.get('/user', (req, res) => {
     const users = [
-        { name: 'John Smith',    username: 'jsmith'    },
-        { name: 'Jane Williams', username: 'jwilliams' },
-        { name: 'Robert Brown',  username: 'rbrown'    },
+        {name: 'John Smith',    username: 'jsmith'},
+        {name: 'Jane Williams', username: 'jwilliams'},
+        {name: 'Robert Brown',  username: 'rbrown'},
     ];
-    res.json( users );
-} );
+    res.json(users);
+});
 
-console.log( `Start Express.js server on http://${HOST}:${PORT}` );
+console.log(`Start Express.js server on http://${HOST}:${PORT}`);
 
 // export listening express.JS server instanceto outside modules
-module.exports = server.listen( PORT, HOST );
+module.exports = server.listen(PORT, HOST);

@@ -10,13 +10,14 @@ module.exports = {
         'jest': true,
     },
     rules: {
-        'indent': [ 'error', 4 ],
-        'quotes': [ 'error', 'single' ],
-        'max-len': [ 'error', { 'code': 120 } ],
-        'no-trailing-spaces': [ 'error' ],
-        'space-before-function-paren': [ 'error' ],
-        'array-bracket-spacing': [ 'error' ],
-        'object-curly-spacing': [ 'error' ],
-        'space-in-parens': [ 'error' ],
+        'indent': ['error', 4],
+        'quotes': ['error', 'single'],
+        'max-len': ['error', {'code': 120}],
+        'no-trailing-spaces': ['error'],
+        'space-before-function-paren': ['error'],
+        'array-bracket-spacing': ['error'],
+        'object-curly-spacing': ['error'],
+        'space-in-parens': ['error'],
+        'no-multiple-empty-lines': 'error',
     }
 };
