@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node src/server.js",
     "jest": "jest --ci",
-    "eslint": "eslint \"{src,test}/**/*.{js,jsx}\"",
-    "eslintReport": "eslint --format junit -o public/linter-report.xml \"{src,test}/**/*.{js,jsx}\"",
+    "eslint-scan": "eslint \"{src,test}/**/*.{js,jsx}\"",
+    "eslint-report": "eslint --format junit -o public/linter-results.xml \"{src,test}/**/*.{js,jsx}\"",
     "jsdoc": "jsdoc --destination public/jsdoc src/server.js",
     "release": "webpack --mode=production"
   },

@@ -1,11 +1,13 @@
+// TODO test all targets local ??
+
 // TODO release only on event: main + tag v. on release branch. Pick version from github tag!
 // TODO docker container? Dockerfile + docker-compose
 // TODO separate build/release artefact and GitHub release item to separate job?
+// TODO Prune eslint Report job?
 
 // TODO rename 'public' directory?
 // TODO cache npm install ??
 // TODO remove supertest?
-// TODO test all targets local ??
 
 const express = require('express');
 

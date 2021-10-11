@@ -64,15 +64,13 @@ jobs:
         cache: 'npm'
 
     - run: npm install
-    - run: npm run eslint
-
-    - run: mkdir -p public
-    - run: npm run eslintReport
+    - run: npm run eslint-scan
+    - run: npm run eslint-report
     - name: Upload Linter Report Artefact
       uses: actions/upload-artifact@v1
       with:
         name: linterReport-v${{ env.release-version }}
-        path: public/linter-report.xml
+        path: public/linter-results.xml
 
   generate-jsdoc:
     name: JSDoc generation on app sourcecode
@@ -97,7 +95,6 @@ jobs:
         cache: 'npm'
 
     - run: npm install
-    - run: mkdir -p public
     - run: npm run jsdoc
 
     - name: Upload JSDoc documentation
