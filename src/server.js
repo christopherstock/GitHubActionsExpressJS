@@ -1,11 +1,12 @@
+// TODO prune mocha tests - replace with jest and create test report
 // TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
 // TODO provide only Release artefact as release item - not entire repository!
-// TODO prune mocha tests - replace with jest and create test report
 // TODO release only on event: main + tag v. on release branch. Pick version from github tag!
 // TODO docker container? Dockerfile + docker-compose
 // TODO separate build/release artefact and GitHub release item to separate job?
 // TODO test all targets local ??
 // TODO cache npm install ??
+// TODO rename 'public' directory?
 
 const express = require('express');
 
