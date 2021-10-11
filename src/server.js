@@ -29,5 +29,5 @@ server.get('/user', (req, res) => {
 
 console.log(`Start Express.js server on http://${HOST}:${PORT}`);
 
-// export listening express.JS server instanceto outside modules
+// export listening express.JS server instance for outside modules
 module.exports = server.listen(PORT, HOST);

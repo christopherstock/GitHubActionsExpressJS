@@ -12,7 +12,7 @@ env:
 
 jobs:
 
-  run-jest-tests:
+  run-unit-tests:
     name: Test Jest Express.js REST-API
     runs-on: ${{ matrix.os }}
     strategy:
@@ -33,16 +33,25 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
+
     - run: npm install
+
+    - run: echo Running Jest Unit tests
     - run: npm test
+
+    - name: Upload Test Report Artefact
+      uses: actions/upload-artifact@v1
+      with:
+        name: test-results-v${{ env.release-version }}
+        path: public/test-results.xml
 
     - name: Upload Test Coverage Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: testCoverage-v${{ env.release-version }}
+        name: test-coverage-v${{ env.release-version }}
         path: public/coverage
 
-  run-linter:
+  run-code-inspection:
     name: ESLint on app sourcecode
     runs-on: ${{ matrix.os }}
     strategy:
@@ -70,12 +79,12 @@ jobs:
     - name: Upload Linter Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: linterReport-v${{ env.release-version }}
+        name: linter-report-v${{ env.release-version }}
         path: public/linter-results.xml
 
   generate-jsdoc:
     name: JSDoc generation on app sourcecode
-    needs: [run-jest-tests, run-linter]
+    needs: [run-unit-tests, run-code-inspection]
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
