@@ -8,7 +8,7 @@ on:
     branches: [ main ]
 
 env:
-  release-version: "1.0.0"
+  release-version: '1.0.0'
 
 jobs:
 
@@ -141,7 +141,7 @@ jobs:
       with:
         name: Release v${{ env.release-version }}
         tag: ${{ env.release-version }}
-        artifacts: "public/app-bundle.js"
+        artifacts: 'public/app-bundle.js'
         token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
         omitBody: true
