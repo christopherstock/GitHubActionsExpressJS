@@ -3,9 +3,11 @@ name: CI/CD for Express.js app (Node.js)
 on:
 
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags:
+    - '\d+\.\d+\.\d+'
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
 
 env:
   release-version: '1.0.0'
