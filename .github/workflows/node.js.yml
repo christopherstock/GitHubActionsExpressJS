@@ -181,7 +181,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # provided by GitHub Actions - no need to set manually
       with:
-        tag_name: ${{ github.ref }}
+        id: ${{ github.ref }}_${{ github.run_id }}
+        tag_name: ${{ github.ref }}_${{ github.run_id }}
         release_name: Release ${{ github.ref }}_${{ github.run_id }}
         body: |
           Feature Changelist:
