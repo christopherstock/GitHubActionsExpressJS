@@ -1,4 +1,5 @@
-// TODO prune mocha tests - replace with jest and create test report
+// TODO remove chai?
+// TODO remove supertest?
 // TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
 // TODO provide only Release artefact as release item - not entire repository!
 // TODO release only on event: main + tag v. on release branch. Pick version from github tag!

@@ -1,5 +1,4 @@
 const request = require('supertest');
-const chai    = require('chai');
 
 describe('request Express.js server app', () => {
     let server;
@@ -25,7 +24,7 @@ describe('request Express.js server app', () => {
             .set('Content-Type', 'application/json')
             .expect('Content-Type', /json/)
             .expect(200, (err, response) => {
-                chai.expect(response.body).to.deep.equal([
+                expect(response.body).toEqual([
                     {name: 'John Smith',    username: 'jsmith'},
                     {name: 'Jane Williams', username: 'jwilliams'},
                     {name: 'Robert Brown',  username: 'rbrown'},
