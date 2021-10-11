@@ -68,9 +68,6 @@ jobs:
     - run: npm install
     - run: npm run jest
 
-    - run: mkdir -p public
-    - run: npm run jestCoverage
-
     - name: Upload Test Coverage Report Artefact
       uses: actions/upload-artifact@v1
       with:
