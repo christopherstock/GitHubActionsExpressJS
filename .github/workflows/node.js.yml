@@ -9,7 +9,7 @@ on:
 
 env:
 
-  version: "1.0.0"
+  version: "7.8.9"
 
 jobs:
 
@@ -44,7 +44,7 @@ jobs:
     - name: Upload Test Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: testReport-v{env.version}
+        name: testReport-v${{ env.version }}
         path: public/test-report.xml
 
   run-jest-tests:
@@ -80,7 +80,7 @@ jobs:
     - name: Upload Test Coverage Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: testCoverage-v{env.version}
+        name: testCoverage-v${{ env.version }}
         path: public/coverage
 
   run-linter:
@@ -115,7 +115,7 @@ jobs:
     - name: Upload Linter Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: linterReport-v{env.version}
+        name: linterReport-v${{ env.version }}
         path: public/linter-report.xml
 
   generate-jsdoc:
@@ -149,7 +149,7 @@ jobs:
     - name: Upload JSDoc documentation
       uses: actions/upload-artifact@v1
       with:
-        name: jsdoc-v{env.version}
+        name: jsdoc-v${{ env.version }}
         path: public/jsdoc
 
   release-production:
@@ -183,5 +183,5 @@ jobs:
     - name: Upload Release Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: app-bundle-v{env.version}
+        name: app-bundle-v${{ env.version }}
         path: public/app-bundle.js
