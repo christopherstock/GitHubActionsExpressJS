@@ -139,11 +139,11 @@ jobs:
     - name: Create GitHub Release
       uses: ncipollo/release-action@v1
       with:
-        name: Release v${{ env.release-version }}-${{ github.run_id }}
+        name: Release v${{ env.release-version }}
         tag: ${{ env.release-version }}-${{ github.run_id }}
         artifacts: "public/app-bundle.js"
         token: ${{ secrets.GITHUB_TOKEN }}
-        allowUpdates: false
+        allowUpdates: true
         omitBody: true
         removeArtifacts: true
         # bodyFile: "body.md"
