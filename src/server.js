@@ -1,13 +1,12 @@
-// TODO remove chai?
-// TODO remove supertest?
-// TODO update to latest npm and Node.js ! Update Node.js versions in pipeline!
 // TODO provide only Release artefact as release item - not entire repository!
 // TODO release only on event: main + tag v. on release branch. Pick version from github tag!
 // TODO docker container? Dockerfile + docker-compose
 // TODO separate build/release artefact and GitHub release item to separate job?
-// TODO test all targets local ??
-// TODO cache npm install ??
+
 // TODO rename 'public' directory?
+// TODO cache npm install ??
+// TODO remove supertest?
+// TODO test all targets local ??
 
 const express = require('express');
 
