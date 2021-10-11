@@ -1,4 +1,3 @@
-// TODO provide only Release artefact as release item - not entire repository!
 // TODO release only on event: main + tag v. on release branch. Pick version from github tag!
 // TODO docker container? Dockerfile + docker-compose
 // TODO separate build/release artefact and GitHub release item to separate job?
