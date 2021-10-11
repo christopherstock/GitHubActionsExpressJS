@@ -136,29 +136,11 @@ jobs:
         name: app-bundle-v${{ env.release-version }}
         path: public/app-bundle.js
 
-    - name: Create GitHub Release Item
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # provided by GitHub Actions - no need to set manually
+    - name: Create GitHub Release
+      uses: ncipollo/release-action@v1
       with:
-        tag_name: ${{ env.release-version }}-${{ github.run_id }}
-        release_name: Release v${{ env.release-version }}-${{ github.run_id }}
-        body: |
-          Feature Changelist:
-          - This list could be specified
-          - .. on top of the pipeline?
-        draft: false
-        prerelease: false
-        allow_duplicate: true
-
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./public/app-bundle.js
-        asset_name: app-bundle.js
-        asset_content_type: text/javascript
+        name: Release v${{ env.release-version }}-${{ github.run_id }}
+        tag: ${{ env.release-version }}-${{ github.run_id }}
+        artifacts: "public/app-bundle.js"
+        # bodyFile: "body.md"
+        token: ${{ secrets.GITHUB_TOKEN }}
