@@ -142,5 +142,8 @@ jobs:
         name: Release v${{ env.release-version }}-${{ github.run_id }}
         tag: ${{ env.release-version }}-${{ github.run_id }}
         artifacts: "public/app-bundle.js"
-        # bodyFile: "body.md"
         token: ${{ secrets.GITHUB_TOKEN }}
+        allowUpdates: false
+        omitBody: true
+        removeArtifacts: true
+        # bodyFile: "body.md"
