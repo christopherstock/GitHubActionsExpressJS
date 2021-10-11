@@ -4,7 +4,7 @@ on:
 
   push:
     tags:
-    - '\d+\.\d+\.\d+'
+    - '*\.*\.*'
 #    branches: [ main ]
 #  pull_request:
 #    branches: [ main ]
@@ -28,6 +28,12 @@ jobs:
 
     - name: Print a greeting
       run: echo Hello everyone! We are executing all JEST tests here!
+
+    - name: Set Release Version from git tag
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+    - name: Print git tag version
+      run: echo The release version is:${RELEASE_VERSION}
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
