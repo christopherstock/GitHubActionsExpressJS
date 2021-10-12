@@ -1,5 +1,4 @@
-// TODO separate build/release artefact and GitHub release item to separate job! download artefact and release it!
-// TODO docker container? Dockerfile + docker-compose
+// TODO docker container? Dockerfile Imahe Creation and Container Run in Actions!
 // TODO Prune eslint Report job?
 // TODO one Node.js version (per variable) to set for linter and unit tests? remove matrix? test matrix -- reports?
 
