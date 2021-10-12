@@ -37,6 +37,9 @@ RUN ls -la
 RUN npm install
 RUN npm run webpack-production
 
+RUN echo 3 =================================================
+RUN ls -la
+
 # RUN pwd
 # RUN echo Test 2
 # RUN echo "$PWD"
