@@ -1,7 +1,7 @@
 FROM node:14
 
 # Create app directory
-WORKDIR /usr/src/app
+# WORKDIR /usr/src/app
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -29,7 +29,10 @@ RUN pwd
 RUN echo Test 2
 RUN echo "$PWD"
 
-COPY ../public/app-bundle.js ./
+RUN echo Test 3 - GitHub Workspace Dir:
+RUN echo "$GITHUB_WORKSPACE"
+
+COPY "$GITHUB_WORKSPACE/public/app-bundle.js" ./
 
 EXPOSE 8181
 
