@@ -49,4 +49,4 @@ RUN ls -la
 # COPY "${GITHUB_WORKSPACE}/public/app-bundle.js" ./
 
 EXPOSE 8181
-# CMD [ "node", "./app-bundle.js" ]
+CMD [ "node", "./public/app-bundle.js" ]
