@@ -2,7 +2,7 @@ FROM node:14
 
 # create app directory inside the container
 # WORKDIR /usr/src/app
-WORKDIR /github/workspace
+# WORKDIR /github/workspace
 
 # copy package.json (and package-lock.json if present) into the container
 COPY public/app-bundle.js ./
