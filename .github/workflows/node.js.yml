@@ -36,16 +36,16 @@ jobs:
     name: Dockerize Production App
     steps:
 
+     - name: Checkout
+       uses: actions/checkout@v2
+       with:
+         path: .github/actions/hello-world
+
      - name: Download Production Build Artefact
        uses: actions/download-artifact@v1
        with:
          name: app-bundle
          path: .
-
-     - name: Checkout
-       uses: actions/checkout@v2
-       with:
-         path: .github/actions/hello-world
 
      - name: AFTER CHECKOUT -- Show app-bundle.js file
        run: ls -la ./app-bundle.js
