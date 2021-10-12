@@ -25,14 +25,19 @@ FROM node:14
 
 # Bundle app source ?????????
 
+RUN echo 1 =================================================
 RUN ls -la
 COPY . .
-COPY public ./public
+RUN echo 2 =================================================
 RUN ls -la
+COPY * .
+RUN echo 3 =================================================
+RUN ls -la
+COPY public/ /public/
+RUN echo 4 =================================================
 
 
 
-# RUN echo =================================================
 # RUN pwd
 # RUN echo Test 2
 # RUN echo "$PWD"
