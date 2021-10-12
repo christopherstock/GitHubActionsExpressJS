@@ -8,8 +8,10 @@ FROM node:14
 # where available (npm@5+)
 # COPY package*.json ./
 
+
 # install curl
-RUN apt-get install -y curl
+# RUN apt-get install -y curl
+
 
 # RUN npm install
 # If you are building your code for production
@@ -30,9 +32,10 @@ RUN echo Test 2
 RUN echo "$PWD"
 
 RUN echo Test 3 - GitHub Workspace Dir:
-RUN echo "$GITHUB_WORKSPACE"
+RUN echo ${GITHUB_WORKSPACE}
+RUN echo "$env.GITHUB_WORKSPACE"
 
-COPY "$GITHUB_WORKSPACE/public/app-bundle.js" ./
+COPY "${GITHUB_WORKSPACE}/public/app-bundle.js" ./
 
 EXPOSE 8181
 
