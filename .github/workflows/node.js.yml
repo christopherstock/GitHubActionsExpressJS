@@ -54,7 +54,7 @@ jobs:
        run: echo "The output time was ${{ steps.hello.outputs.time }}"
 
   run-unit-tests:
-    name: Run Unit and Integration Tests
+    name: Unit and Integration Tests
     needs: build
     runs-on: ${{ matrix.os }}
     strategy:
@@ -86,7 +86,7 @@ jobs:
         path: public/coverage
 
   run-code-inspection:
-    name: Run Code Inspection
+    name: Code Inspection
     needs: build
     runs-on: ${{ matrix.os }}
     strategy:

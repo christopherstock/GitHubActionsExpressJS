@@ -1,7 +1,7 @@
 FROM node:14
 
 # Create app directory
-WORKDIR /usr/src/app
+# WORKDIR /usr/src/app
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -22,8 +22,10 @@ RUN apt-get install -y curl
 # RUN npm install babel-preset-env
 
 # Bundle app source ?????????
-COPY ./public/app-bundle.js .
+# COPY ./public/app-bundle.js ./
+COPY . .
 
 EXPOSE 8181
-# CMD [ "node", "public/app-bundle.js" ]
+
+CMD [ "node", "./public/app-bundle.js" ]
 CMD [ "node", "./app-bundle.js" ]
