@@ -8,39 +8,10 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  release-version: '0.0.1'
-
 jobs:
 
-  get-tag-version:
-    name: Pick the version number from git tag
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node-version: [14.18] # [12.x, 13.x, 14.x, 15.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set Release Version from git tag I
-      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-    - name: Set Release Version from git tag II
-      run: echo "release-version=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-
-    - name: Print git tag version
-      run: echo The release version is:${RELEASE_VERSION}
-
-    - name: Print env for 'git tag version'
-      run: echo The release version is:${{ env.release-version }}
-
-    - name: Print event that triggered this workflow
-      run: echo The event that triggered this workflow is:${{ github.event_name }}
-
   run-unit-tests:
-    name: Test Jest Express.js REST-API
-    needs: get-tag-version
+    name: Run Unit and Integration Tests
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -69,18 +40,17 @@ jobs:
     - name: Upload Test Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: test-results-v${{ env.release-version }}
+        name: test-results
         path: public/test-results.xml
 
     - name: Upload Test Coverage Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: test-coverage-v${{ env.release-version }}
+        name: test-coverage
         path: public/coverage
 
   run-code-inspection:
-    name: ESLint on app sourcecode
-    needs: get-tag-version
+    name: Run Code Inspection
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -101,17 +71,20 @@ jobs:
         cache: 'npm'
 
     - run: npm install
-    - run: npm run eslint-scan
-    - run: npm run eslint-report
+
+    - name: Run ESLint Scan on app sourcecode
+      run: npm run eslint-scan
+    - name: Generate ESLint Report from app sourcecode scan
+      run: npm run eslint-report
 
     - name: Upload Linter Report Artefact
       uses: actions/upload-artifact@v1
       with:
-        name: linter-report-v${{ env.release-version }}
+        name: linter-report
         path: public/linter-results.xml
 
   generate-jsdoc:
-    name: JSDoc generation on app sourcecode
+    name: Generate JSDoc Sourcecode Documentation
     needs: [run-unit-tests, run-code-inspection]
     runs-on: ${{ matrix.os }}
     strategy:
@@ -138,11 +111,11 @@ jobs:
     - name: Upload JSDoc documentation
       uses: actions/upload-artifact@v1
       with:
-        name: jsdoc-v${{ env.release-version }}
+        name: jsdoc-sourcecode-documentation
         path: public/jsdoc
 
   build-and-release-production:
-    name: Create and Release Production Build
+    name: Build Production Release and create GitHub Release
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     needs: generate-jsdoc
     runs-on: ubuntu-latest
