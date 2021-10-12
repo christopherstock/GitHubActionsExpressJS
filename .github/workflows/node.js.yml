@@ -47,8 +47,6 @@ jobs:
      - name: My first step
        id: hello
        uses: ./.github/actions/hello-world
-       with:
-         who-to-greet: 'Chrisy'
      # Use the output from the `hello` step
      - name: Get the output time
        run: echo "The output time was ${{ steps.hello.outputs.time }}"
