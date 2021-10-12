@@ -143,11 +143,11 @@ jobs:
 
   build-and-release-production:
     name: Create and Release Production Build
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     needs: generate-jsdoc
     runs-on: ubuntu-latest
     steps:
     - name: Release is only executed if a tag is pushed
-      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
       uses: actions/checkout@v2
     - name: Use Node.js 14.18
       uses: actions/setup-node@v2
