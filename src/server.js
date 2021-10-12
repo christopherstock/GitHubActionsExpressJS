@@ -1,6 +1,7 @@
+// TODO remove release-version global env variable!
 // TODO release only on event: main + tag v. on release branch. Pick version from github tag!
-// TODO docker container? Dockerfile + docker-compose
 // TODO separate build/release artefact and GitHub release item to separate job?
+// TODO docker container? Dockerfile + docker-compose
 // TODO Prune eslint Report job?
 // TODO cache npm install ??
 // TODO remove supertest?
