@@ -25,6 +25,8 @@ FROM node:14
 
 # Bundle app source ?????????
 
+RUN ls -la
+
 RUN echo Test 1
 RUN pwd
 
