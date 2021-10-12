@@ -6,11 +6,11 @@
   "main": "src/js/server.js",
   "scripts": {
     "start": "node src/server.js",
+    "webpack-production": "webpack --mode=production",
     "test": "jest --ci",
     "eslint-scan": "eslint \"{src,test}/**/*.{js,jsx}\"",
     "eslint-report": "eslint --format junit -o public/linter-results.xml \"{src,test}/**/*.{js,jsx}\"",
-    "jsdoc": "jsdoc --destination public/jsdoc src/server.js",
-    "webpack-production": "webpack --mode=production"
+    "jsdoc": "jsdoc --destination public/jsdoc src/server.js"
   },
   "dependencies": {
     "express": "^4.16.1"

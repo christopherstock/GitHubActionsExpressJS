@@ -4,9 +4,9 @@
 
 const express = require('express');
 
-/** The host address to listen on incoming requests. */
+/** The host address to establish the Express.js server on. */
 const HOST = '0.0.0.0';
-/** The port to listen on incoming requests. */
+/** The port number to establish the Express.js server on. */
 const PORT = 8181;
 
 /** The Express.js server instance. */

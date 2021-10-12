@@ -10,8 +10,29 @@ on:
 
 jobs:
 
+  build:
+    name: Build Production App
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.18
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.18
+        cache: 'npm'
+    - name: Install npm packages
+      run: npm install
+    - name: Build Production App Bundle
+      run: npm run webpack-production
+    - name: Upload Production App Bundle
+      uses: actions/upload-artifact@v1
+      with:
+        name: app-bundle
+        path: public/app-bundle.js
+
   run-unit-tests:
-    name: Unit and Integration Tests
+    name: Run Unit and Integration Tests
+    needs: build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -43,6 +64,7 @@ jobs:
 
   run-code-inspection:
     name: Run Code Inspection
+    needs: build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -70,7 +92,7 @@ jobs:
         path: public/linter-results.xml
 
   generate-jsdoc:
-    name: Generate JSDoc Sourcecode Documentation
+    name: Generate Sourcecode Documentation
     needs: [run-unit-tests, run-code-inspection]
     runs-on: ${{ matrix.os }}
     strategy:
@@ -95,8 +117,8 @@ jobs:
         name: jsdoc-sourcecode-documentation
         path: public/jsdoc
 
-  build-and-release-production:
-    name: Build Production Release and create GitHub Release
+  create-github-release:
+    name: Create GitHub Release
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     needs: generate-jsdoc
     runs-on: ubuntu-latest
@@ -109,19 +131,13 @@ jobs:
         cache: 'npm'
     - name: Pick Release Version from git tag
       run: echo "release-version=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-    - name: Print git tag version
+    - name: Debug out picked Release Version from git tag
       run: echo The release version picked from the tag is:${{ env.release-version }}
-    - name: Debug Output
-      run: |
-        echo npm is now installing ..
     - name: Install npm packages
       run: npm install
-    - name: Debug Output
-      run: |
-        echo npm is invoking target 'release'
     - name: Build Production Release
       run: npm run webpack-production
-    - name: Rename Production Release file to Release version
+    - name: Rename Production Release file and insert release version
       run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
     - name: Upload Release Artefact
       uses: actions/upload-artifact@v1
