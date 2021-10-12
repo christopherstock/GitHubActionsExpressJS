@@ -22,7 +22,7 @@ RUN apt-get install -y curl
 # RUN npm install babel-preset-env
 
 # Bundle app source ?????????
-COPY . .
+COPY ./public/app-bundle.js .
 
 EXPOSE 8181
 # CMD [ "node", "public/app-bundle.js" ]
