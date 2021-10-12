@@ -3,7 +3,8 @@ FROM node:14
 # Create app directory
 # WORKDIR /usr/src/app
 # WORKDIR $GITHUB_WORKSPACE
-WORKDIR /github/workspace/
+
+# WORKDIR /github/workspace/
 
 # install curl
 # RUN apt-get install -y curl
@@ -30,6 +31,7 @@ RUN ls -la public
 RUN echo E $GITHUB_WORKSPACE
 RUN echo F ${GITHUB_WORKSPACE}
 
-WORKDIR "/public"
+# WORKDIR "/public"
 EXPOSE 8181
-CMD [ "node", "app-bundle.js" ]
+
+# CMD [ "node", "app-bundle.js" ]
