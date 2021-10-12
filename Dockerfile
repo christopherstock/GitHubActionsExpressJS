@@ -51,5 +51,6 @@ RUN ls -la public
 # RUN echo "$env.GITHUB_WORKSPACE"
 # COPY "${GITHUB_WORKSPACE}/public/app-bundle.js" ./
 
+WORKDIR "/public"
 EXPOSE 8181
-CMD [ "node", "./public/app-bundle.js" ]
+CMD [ "node", "app-bundle.js" ]
