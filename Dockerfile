@@ -23,7 +23,9 @@ RUN apt-get install -y curl
 
 # Bundle app source ?????????
 
-COPY ../../../public/app-bundle.js ./
+COPY ./public/app-bundle.js ./
+COPY ./app-bundle.js ./
+COPY ../public/app-bundle2.js ./
 
 EXPOSE 8181
 
