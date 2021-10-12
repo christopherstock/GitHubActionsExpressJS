@@ -74,7 +74,7 @@ docker images
 Create and run a new Docker container from your Docker Image by specifying the tag name.
 The port `8181` from inside the Docker container is published and mapped to the port `45678` on the host operating system.
 ```
-docker run --publish 45678:8181 --tty express-js-app:14.18
+docker run --detach --publish 45678:8181 --tty express-js-app:14.18
 ```
 
 You should see this output from the container:

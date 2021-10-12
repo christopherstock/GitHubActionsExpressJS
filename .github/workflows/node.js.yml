@@ -35,7 +35,10 @@ jobs:
     needs: build
     name: A job to say hello
     steps:
-     - uses: actions/checkout@v1
+     - name: Checkout
+       uses: actions/checkout@v2
+       with:
+         path: ".github/actions"
      - name: Download Production Build Artefact
        uses: actions/download-artifact@v1
        with:
