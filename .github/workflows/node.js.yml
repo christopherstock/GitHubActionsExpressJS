@@ -46,8 +46,13 @@ jobs:
        uses: actions/checkout@v2
        with:
          path: .github/actions/hello-world
-     - name: AFTER CHECKOUT -- Show app-bundle.js content
-       run: cat ./app-bundle.js
+
+     - name: AFTER CHECKOUT -- Show app-bundle.js file
+       run: ls -la ./app-bundle.js
+
+     - name: AFTER CHECKOUT -- Show dir listing
+       run: ls -la
+
      - name: Run Docker Container Deployment
        id: hello
        uses: ./.github/actions/hello-world

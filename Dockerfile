@@ -30,13 +30,12 @@ RUN ls -la
 COPY . .
 RUN echo 2 =================================================
 RUN ls -la
-COPY * /
-RUN echo 3 =================================================
-RUN ls -la
-COPY public/ /public/
-RUN echo 4 =================================================
 
+# COPY public/ /public/
+# RUN echo 4
 
+npm install
+npm run webpack-production
 
 # RUN pwd
 # RUN echo Test 2
@@ -45,5 +44,6 @@ RUN echo 4 =================================================
 # RUN echo ${GITHUB_WORKSPACE}
 # RUN echo "$env.GITHUB_WORKSPACE"
 # COPY "${GITHUB_WORKSPACE}/public/app-bundle.js" ./
-# EXPOSE 8181
-# CMD [ "node", "./app-bundle.js" ]
+
+EXPOSE 8181
+CMD [ "node", "./public/app-bundle.js" ]
