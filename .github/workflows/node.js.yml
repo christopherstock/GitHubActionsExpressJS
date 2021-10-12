@@ -10,8 +10,25 @@ on:
 
 jobs:
 
+  hello-world-job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+     - uses: actions/checkout@v1
+     - name: My first step
+       uses: ./.github/actions/hello-world
+     - name: Hello world action step
+       id: hello
+       uses: actions/hello-world@v1
+       with:
+         who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+
   build:
     name: Build Production App
+    needs: hello-world-job
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
