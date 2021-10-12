@@ -35,15 +35,15 @@ jobs:
     needs: build
     name: Dockerize Production App
     steps:
-     - name: Checkout
-       uses: actions/checkout@v2
-       with:
-         path: .github/actions/hello-world
      - name: Download Production Build Artefact
        uses: actions/download-artifact@v1
        with:
          name: app-bundle
-         path: public
+         path: .
+     - name: Checkout
+       uses: actions/checkout@v2
+       with:
+         path: .github/actions/hello-world
      - name: My first step
        id: hello
        uses: ./.github/actions/hello-world
