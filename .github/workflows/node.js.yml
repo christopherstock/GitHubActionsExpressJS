@@ -171,20 +171,23 @@ jobs:
         echo npm is invoking target 'release'
 
     - name: Build Production Release
-      run: npm run release
+      run: npm run webpack-production
+
+    - name: Rename Production Release file to Release version
+      run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
 
     - name: Upload Release Artefact
       uses: actions/upload-artifact@v1
       with:
         name: app-bundle-v${{ env.release-version }}
-        path: public/app-bundle.js
+        path: public/app-bundle-v${{ env.release-version }}.js
 
     - name: Create GitHub Release
       uses: ncipollo/release-action@v1
       with:
         name: Release v${{ env.release-version }}
         tag: ${{ env.release-version }}
-        artifacts: 'public/app-bundle.js'
+        artifacts: 'public/app-bundle-v${{ env.release-version }}.js'
         token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
         omitBody: true

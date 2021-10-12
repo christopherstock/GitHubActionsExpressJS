@@ -10,7 +10,7 @@
     "eslint-scan": "eslint \"{src,test}/**/*.{js,jsx}\"",
     "eslint-report": "eslint --format junit -o public/linter-results.xml \"{src,test}/**/*.{js,jsx}\"",
     "jsdoc": "jsdoc --destination public/jsdoc src/server.js",
-    "release": "webpack --mode=production"
+    "webpack-production": "webpack --mode=production"
   },
   "dependencies": {
     "express": "^4.16.1"
