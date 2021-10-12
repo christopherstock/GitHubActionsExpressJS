@@ -34,8 +34,8 @@ RUN ls -la
 # COPY public/ /public/
 # RUN echo 4
 
-npm install
-npm run webpack-production
+RUN npm install
+RUN npm run webpack-production
 
 # RUN pwd
 # RUN echo Test 2
