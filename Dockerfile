@@ -27,7 +27,11 @@ FROM node:14
 
 # RUN echo 1 =================================================
 # RUN ls -la
+
+RUN mkdir public
+COPY public/* public/
 COPY . .
+
 # RUN echo 2 =================================================
 # RUN ls -la
 
