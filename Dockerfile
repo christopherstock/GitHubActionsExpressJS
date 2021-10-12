@@ -27,22 +27,18 @@ FROM node:14
 
 RUN ls -la
 COPY . .
+COPY public ./public
 RUN ls -la
 
 
 
-RUN echo =================================================
-RUN pwd
-
-RUN echo Test 2
-RUN echo "$PWD"
-
-RUN echo Test 3 - GitHub Workspace Dir:
-RUN echo ${GITHUB_WORKSPACE}
-RUN echo "$env.GITHUB_WORKSPACE"
-
-COPY "${GITHUB_WORKSPACE}/public/app-bundle.js" ./
-
-EXPOSE 8181
-
-CMD [ "node", "./app-bundle.js" ]
+# RUN echo =================================================
+# RUN pwd
+# RUN echo Test 2
+# RUN echo "$PWD"
+# RUN echo Test 3 - GitHub Workspace Dir:
+# RUN echo ${GITHUB_WORKSPACE}
+# RUN echo "$env.GITHUB_WORKSPACE"
+# COPY "${GITHUB_WORKSPACE}/public/app-bundle.js" ./
+# EXPOSE 8181
+# CMD [ "node", "./app-bundle.js" ]
