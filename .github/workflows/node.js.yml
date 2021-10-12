@@ -135,8 +135,13 @@ jobs:
       run: echo The release version picked from the tag is:${{ env.release-version }}
     - name: Install npm packages
       run: npm install
-    - name: Build Production Release
-      run: npm run webpack-production
+
+    - name: Download Production Build Artefact
+      uses: actions/download-artifact@v1
+      with:
+        name: app-bundle
+        path: public/app-bundle.js
+
     - name: Rename Production Release file and insert release version
       run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
     - name: Upload Release Artefact
