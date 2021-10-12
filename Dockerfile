@@ -17,3 +17,4 @@ COPY . .
 
 EXPOSE 8181
 CMD [ "node", "public/app-bundle.js" ]
+CMD [ "node", "./app-bundle.js" ]
