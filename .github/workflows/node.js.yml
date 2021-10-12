@@ -35,17 +35,19 @@ jobs:
     needs: build
     name: Dockerize Production App
     steps:
+
      - name: Download Production Build Artefact
        uses: actions/download-artifact@v1
        with:
          name: app-bundle
          path: .
-     - name: Show app-bundle.js content
-       run: cat ./app-bundle.js
+
      - name: Checkout
        uses: actions/checkout@v2
        with:
          path: .github/actions/hello-world
+     - name: AFTER CHECKOUT -- Show app-bundle.js content
+       run: cat ./app-bundle.js
      - name: Run Docker Container Deployment
        id: hello
        uses: ./.github/actions/hello-world
