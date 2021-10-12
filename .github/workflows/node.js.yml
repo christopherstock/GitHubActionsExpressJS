@@ -140,9 +140,13 @@ jobs:
       with:
         name: app-bundle
         path: public
-    - name: Rename Production Release file and insert release version
+    - name: Delete Production Build Artefact
+      uses: geekyeggo/delete-artifact@v1
+      with:
+        name: app-bundle
+    - name: Rename Production Build Artefact by inserting release version
       run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
-    - name: Upload Release Artefact
+    - name: Upload Renamed Production Build Artefact
       uses: actions/upload-artifact@v1
       with:
         name: app-bundle-v${{ env.release-version }}
