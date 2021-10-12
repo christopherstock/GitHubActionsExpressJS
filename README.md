@@ -8,6 +8,8 @@ ___
 
 # 1. npm Targets
 
+All npm targets can be run on your local machine.
+
 ## Install
 Install all Node.js packages for this project
 ```
@@ -58,6 +60,8 @@ npm run release
 ___
 
 # 2. Docker
+
+All docker commands can be run on your local machine.
 
 ## Build Docker Image
 You can build a Docker image from the `Dockerfile` via this command.
