@@ -26,8 +26,12 @@ FROM node:14
 # Bundle app source ?????????
 
 RUN ls -la
+COPY . .
+RUN ls -la
 
-RUN echo Test 1
+
+
+RUN echo =================================================
 RUN pwd
 
 RUN echo Test 2
