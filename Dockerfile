@@ -16,4 +16,4 @@ COPY public/app-bundle.js ./
 EXPOSE 8181
 
 CMD [ "echo", "Hello from inside the Node.js Container" ]
-CMD [ "node", "public/app-bundle.js" ]
+CMD [ "node", "app-bundle.js" ]
