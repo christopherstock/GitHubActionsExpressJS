@@ -36,6 +36,9 @@ jobs:
     - name: Print env for 'git tag version'
       run: echo The release version is:${{ env.release-version }}
 
+    - name: Print event that triggered this workflow
+      run: echo The event that triggered this workflow is:${{ github.event_name }}
+
   run-unit-tests:
     name: Test Jest Express.js REST-API
     needs: get-tag-version
