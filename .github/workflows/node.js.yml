@@ -16,15 +16,13 @@ jobs:
     steps:
      - uses: actions/checkout@v1
      - name: My first step
-       uses: ./.github/actions/hello-world
-     - name: Hello world action step
        id: hello
-       uses: actions/hello-world@v1
+       uses: ./.github/actions/hello-world
        with:
-         who-to-greet: 'Mona the Octocat'
+         who-to-greet: 'Chrisy'
      # Use the output from the `hello` step
      - name: Get the output time
-       run: echo "The time was ${{ steps.hello.outputs.time }}"
+       run: echo "The output time was ${{ steps.hello.outputs.time }}"
 
   build:
     name: Build Production App
