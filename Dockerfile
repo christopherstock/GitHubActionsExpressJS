@@ -46,4 +46,4 @@ RUN npm run webpack-production
 # COPY "${GITHUB_WORKSPACE}/public/app-bundle.js" ./
 
 EXPOSE 8181
-CMD [ "node", "./public/app-bundle.js" ]
+# CMD [ "node", "./app-bundle.js" ]
