@@ -23,7 +23,13 @@ RUN apt-get install -y curl
 
 # Bundle app source ?????????
 
-COPY public/app-bundle.js ./
+RUN echo Test 1
+RUN pwd
+
+RUN echo Test 2
+RUN echo "$PWD"
+
+COPY ../public/app-bundle.js ./
 
 EXPOSE 8181
 
