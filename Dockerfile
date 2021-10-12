@@ -25,11 +25,11 @@ FROM node:14
 
 # Bundle app source ?????????
 
-RUN echo 1 =================================================
-RUN ls -la
+# RUN echo 1 =================================================
+# RUN ls -la
 COPY . .
-RUN echo 2 =================================================
-RUN ls -la
+# RUN echo 2 =================================================
+# RUN ls -la
 
 # COPY public/ /public/
 # RUN echo 4
@@ -37,8 +37,11 @@ RUN ls -la
 RUN npm install
 RUN npm run webpack-production
 
-RUN echo 3 =================================================
-RUN ls -la
+# RUN echo 3 =================================================
+# RUN ls -la
+
+RUN echo 4 =================================================
+RUN ls -la public
 
 # RUN pwd
 # RUN echo Test 2
