@@ -18,31 +18,23 @@ jobs:
         node-version: [14.18] # [12.x, 13.x, 14.x, 15.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
-
     steps:
     - uses: actions/checkout@v2
-
     - name: Print a greeting
       run: echo Hello everyone! We are executing all JEST tests here!
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
-
     - run: npm install
-
     - run: echo Running Jest Unit tests
     - run: npm test
-
     - name: Upload Test Report Artefact
       uses: actions/upload-artifact@v1
       with:
         name: test-results
         path: public/test-results.xml
-
     - name: Upload Test Coverage Report Artefact
       uses: actions/upload-artifact@v1
       with:
@@ -57,26 +49,20 @@ jobs:
         node-version: [14.18] # [12.x, 13.x, 14.x, 15.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
-
     steps:
     - uses: actions/checkout@v2
-
     - name: Print a greeting
       run: echo Hello everyone! We are now linting the code ..
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
     - run: npm install
-
     - name: Run ESLint Scan on app sourcecode
       run: npm run eslint-scan
     - name: Generate ESLint Report from app sourcecode scan
       run: npm run eslint-report
-
     - name: Upload Linter Report Artefact
       uses: actions/upload-artifact@v1
       with:
@@ -92,22 +78,17 @@ jobs:
         node-version: [14.18] # [12.x, 13.x, 14.x, 15.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
-
     steps:
     - uses: actions/checkout@v2
-
     - name: Print a greeting
       run: echo Hello everyone! We are now generating JSDoc documentation for all JavaScript source codes ..
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
     - run: npm install
     - run: npm run jsdoc
-
     - name: Upload JSDoc documentation
       uses: actions/upload-artifact@v1
       with:
@@ -126,35 +107,27 @@ jobs:
       with:
         node-version: 14.18
         cache: 'npm'
-
     - name: Pick Release Version from git tag
       run: echo "release-version=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-
     - name: Print git tag version
       run: echo The release version picked from the tag is:${{ env.release-version }}
-
     - name: Debug Output
       run: |
         echo npm is now installing ..
     - name: Install npm packages
       run: npm install
-
     - name: Debug Output
       run: |
         echo npm is invoking target 'release'
-
     - name: Build Production Release
       run: npm run webpack-production
-
     - name: Rename Production Release file to Release version
       run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
-
     - name: Upload Release Artefact
       uses: actions/upload-artifact@v1
       with:
         name: app-bundle-v${{ env.release-version }}
         path: public/app-bundle-v${{ env.release-version }}.js
-
     - name: Create GitHub Release
       uses: ncipollo/release-action@v1
       with:
