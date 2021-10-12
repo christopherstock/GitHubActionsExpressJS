@@ -4,13 +4,13 @@ FROM node:14
 WORKDIR /usr/src/app
 
 # copy package.json (and package-lock.json if present) into the container
-COPY package*.json ./
+COPY public/app-bundle.js ./
 
 # install npm packages
-RUN npm install
+# RUN npm install
 
 # Bundle app source
-COPY . .
+# COPY . .
 
 EXPOSE 8181
-CMD [ "node", "src/server.js" ]
+CMD [ "node", "public/app-bundle.js" ]
