@@ -146,7 +146,9 @@ jobs:
     needs: generate-jsdoc
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Release is only executed if a tag is pushed
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+      uses: actions/checkout@v2
     - name: Use Node.js 14.18
       uses: actions/setup-node@v2
       with:
