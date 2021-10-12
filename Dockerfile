@@ -2,12 +2,17 @@ FROM node:14
 
 # Create app directory
 # WORKDIR /usr/src/app
+# WORKDIR $GITHUB_WORKSPACE
+WORKDIR /github/workspace/
 
 # install curl
 # RUN apt-get install -y curl
 
 RUN echo A =================================================
-RUN ls -la public
+RUN ls -la
+
+RUN echo C =================================================
+RUN ls -la /github/workspace/
 
 RUN mkdir public
 COPY public/* public/
