@@ -1,19 +1,19 @@
 FROM node:14
 
-# create app directory inside the container
-# WORKDIR /usr/src/app
-# WORKDIR /github/workspace
+# Create app directory
+WORKDIR /usr/src/app
 
-# copy package.json (and package-lock.json if present) into the container
-COPY public/app-bundle.js ./
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-# install npm packages
-# RUN npm install
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
 
 # Bundle app source
-# COPY . .
+COPY . .
 
 EXPOSE 8181
-
-CMD [ "echo", "Hello from inside the Node.js Container" ]
-CMD [ "node", "app-bundle.js" ]
+CMD [ "node", "public/app-bundle.js" ]
