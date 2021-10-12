@@ -40,11 +40,13 @@ jobs:
        with:
          name: app-bundle
          path: .
+     - name: Show app-bundle.js content
+       run: cat ./app-bundle.js
      - name: Checkout
        uses: actions/checkout@v2
        with:
          path: .github/actions/hello-world
-     - name: My first step
+     - name: Run Docker Container Deployment
        id: hello
        uses: ./.github/actions/hello-world
      # Use the output from the `hello` step

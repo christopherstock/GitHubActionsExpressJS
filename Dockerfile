@@ -30,7 +30,7 @@ RUN ls -la
 COPY . .
 RUN echo 2 =================================================
 RUN ls -la
-COPY * .
+COPY * /
 RUN echo 3 =================================================
 RUN ls -la
 COPY public/ /public/
