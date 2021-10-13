@@ -43,7 +43,7 @@ jobs:
       # run: docker run --detach --publish 45678:8181 --tty express-js-app:14.18
       # run: docker run --publish 45678:8181 --tty express-js-app:14.18
 
-      run: echo "container-name=docker run --detach --publish 45678:8181 --tty express-js-app:14.18" >> $GITHUB_ENV
+      run: echo "container-name=$( docker run --detach --publish 45678:8181 --tty express-js-app:14.18 )" >> $GITHUB_ENV
 
 
     - name: Show running Container Name
