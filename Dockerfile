@@ -1,35 +1,11 @@
+# base image for this container
 FROM node:14
 
-
-# Container image that runs your code
-# FROM alpine:3.10
-
-
-# Create app directory
-# WORKDIR /usr/src/app
-# WORKDIR $GITHUB_WORKSPACE
-
-# WORKDIR /github/workspace/
-
-# install curl
-# RUN apt-get install -y curl
-
-RUN echo BEFORE COPY =================================================
-RUN ls -la
-
-# RUN echo 0 =================================================
-# RUN find / -print
-
-# RUN mkdir public
+# copy 'public' directory into the container
 COPY public/* public/
-# COPY . .
 
-RUN echo AFTER COPY =================================================
-RUN ls -la
-
-
-# WORKDIR "/public"
+# make container's port 8181 accessible to the outside
 EXPOSE 8181
 
+# run the app bundle with node
 CMD [ "node", "./public/app-bundle.js" ]
-# RUN nohup bash -c "node ./public/app-bundle.js &"

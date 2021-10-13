@@ -39,19 +39,15 @@ jobs:
     steps:
       - name: Checkout Sourcecode
         uses: actions/checkout@v2
-
       - name: Download Production Build Artefact
         uses: actions/download-artifact@v1
         with:
           name: app-bundle
           path: public
-
       - name: Show dir listing all
         run: ls -la
-
       - name: Show dir listing public
         run: ls -la public
-
       - name: Docker Build
         run: docker build . --tag express-js-app:14.18
       - name: Docker Run
@@ -75,7 +71,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Sourcecode
+      uses: actions/checkout@v2
     - name: Print a greeting
       run: echo Hello everyone! We are executing all JEST tests here!
     - name: Use Node.js ${{ matrix.node-version }}
@@ -107,7 +104,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Sourcecode
+      uses: actions/checkout@v2
     - name: Print a greeting
       run: echo Hello everyone! We are now linting the code ..
     - name: Use Node.js ${{ matrix.node-version }}
@@ -136,7 +134,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Sourcecode
+      uses: actions/checkout@v2
     - name: Print a greeting
       run: echo Hello everyone! We are now generating JSDoc documentation for all JavaScript source codes ..
     - name: Use Node.js ${{ matrix.node-version }}
@@ -158,7 +157,8 @@ jobs:
     needs: generate-jsdoc
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Sourcecode
+      uses: actions/checkout@v2
     - name: Use Node.js 14.18
       uses: actions/setup-node@v2
       with:
