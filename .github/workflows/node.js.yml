@@ -40,21 +40,20 @@ jobs:
 
 
     - name: Docker Run
-      # run: docker run --detach --publish 45678:8181 --tty express-js-app:14.18
-      run: docker run --publish 45678:8181 --tty express-js-app:14.18
-
+      run: docker run --detach --publish 45678:8181 --tty express-js-app:14.18
+      # run: docker run --publish 45678:8181 --tty express-js-app:14.18
 
     - name: Show dir listing AFTER DOCKER RUN
       run: ls -la
 
-    - name: Download Production Build Artefact (useless..)
-      uses: actions/download-artifact@v1
-      with:
-        name: app-bundle
-        path: .
+#    - name: Download Production Build Artefact (useless..)
+#      uses: actions/download-artifact@v1
+#      with:
+#        name: app-bundle
+#        path: .
 
-    - name: AFTER DOWNLOAD -- Show dir listing
-      run: ls -la
+#    - name: AFTER DOWNLOAD -- Show dir listing
+#      run: ls -la
 
     # - name: Run Docker Container Deployment
     # id: hello
@@ -62,9 +61,9 @@ jobs:
     # Use the output from the `hello` step
 
     - name: Query the Docker container?
-      run: echo "Time to QUERY the docker container?"
+      run: curl -i localhost:45678/user
 
-    - name: Stop Docker container?
+    - name: Stop the Docker container?
       run: echo "Time to STOP the docker container?"
 
   docker-job:
