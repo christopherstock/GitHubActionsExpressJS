@@ -41,7 +41,7 @@ jobs:
     - name: Docker Run
       run: docker run --detach --publish 45678:8181 --tty express-js-app:14.18
 
-    - name: Show dir listing AFTER ACTION CHECKOUT
+    - name: Show dir listing AFTER DOCKER RUN
       run: ls -la
 
     - name: Download Production Build Artefact (useless..)
@@ -53,9 +53,9 @@ jobs:
     - name: AFTER DOWNLOAD -- Show dir listing
       run: ls -la
 
-    - name: Run Docker Container Deployment
-      id: hello
-      uses: ./.github/actions/hello-world
+    # - name: Run Docker Container Deployment
+    # id: hello
+    # uses: ./.github/actions/hello-world
     # Use the output from the `hello` step
 
     - name: Query the Docker container?
