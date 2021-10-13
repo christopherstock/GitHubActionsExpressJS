@@ -32,73 +32,11 @@ jobs:
         name: app-bundle
         path: public/app-bundle.js
 
-    - name: Show dir listing BEFORE ACTION CHECKOUT
-      run: ls -la
-
-    - name: Docker Build
-      run: docker build . --tag express-js-app:14.18
-
-
-    - name: Docker Run
-      run: docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18
-
-
-
-    # - name: Show running Container Name
-    #   run: echo "Container name is:${{ env.container-name }}"
-
-
-      # run echo "::set-output name=TAG_NAME::$(cat projectFile | grep -Po '(?<=Version>).*(?=</Version>)')"
-
-
-#    - name: Download Production Build Artefact (useless..)
-#      uses: actions/download-artifact@v1
-#      with:
-#        name: app-bundle
-#        path: .
-
-#    - name: AFTER DOWNLOAD -- Show dir listing
-#      run: ls -la
-
-    # - name: Run Docker Container Deployment
-    # id: hello
-    # uses: ./.github/actions/hello-world
-    # Use the output from the `hello` step
-
-
-#    - name: Wait until container is up ..
-#      run: docker wait express-js-app-container
-
-    - name: Sleep 5 seconds
-      run: sleep 5s
-
-#    - name: Wait until Docker container is running
-#      run: |
-#        until [ "`docker inspect -f {{.State.Running}} express-js-app-container`"=="true" ]; do \
-#          sleep 1.1; \
-#          echo "Waiting till container [express-js-app-container] is running"; \
-#        done;
-
-    - name: Send a cURL request to the Docker container
-      run: curl --connect-timeout 5 -i 0.0.0.0:45678/user
-
-    - name: Stop the Docker container
-      run: docker stop express-js-app-container
-
-    - name: Wait until container is down
-      run: docker wait express-js-app-container
-
   docker-job:
     runs-on: ubuntu-latest
-    if: true == false
     needs: build
     name: Dockerize Production App
     steps:
-
-     - name: Checkout
-       uses: actions/checkout@v2
-       with:
-         path: .github/actions/hello-world
 
      - name: Download Production Build Artefact
        uses: actions/download-artifact@v1
@@ -106,18 +44,21 @@ jobs:
          name: app-bundle
          path: .
 
-     - name: AFTER CHECKOUT -- Show app-bundle.js file
-       run: ls -la ./app-bundle.js
+    - name: Show dir listing BEFORE ACTION CHECKOUT
+      run: ls -la
 
-     - name: AFTER CHECKOUT -- Show dir listing
-       run: ls -la
-
-     - name: Run Docker Container Deployment
-       id: hello
-       uses: ./.github/actions/hello-world
-     # Use the output from the `hello` step
-     - name: Get the output time
-       run: echo "The output time was ${{ steps.hello.outputs.time }}"
+    - name: Docker Build
+      run: docker build . --tag express-js-app:14.18
+    - name: Docker Run
+      run: docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18
+    - name: Sleep 5 seconds
+      run: sleep 5s
+    - name: Send a cURL request to the Docker container
+      run: curl --connect-timeout 5 -i 0.0.0.0:45678/user
+    - name: Stop the Docker container
+      run: docker stop express-js-app-container
+    - name: Wait until container is down
+      run: docker wait express-js-app-container
 
   run-unit-tests:
     name: Unit Tests
