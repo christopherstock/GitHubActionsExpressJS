@@ -60,8 +60,10 @@ jobs:
     # uses: ./.github/actions/hello-world
     # Use the output from the `hello` step
 
-    - name: Query the Docker container?
-      run: curl -i -v 0.0.0.0:45678/user
+
+#   - name: Query the Docker container?
+#     run: curl -i -v 0.0.0.0:45678/user
+
 
     - name: Query the Docker container?
       run: curl -i -v 0.0.0.0:8181/user
