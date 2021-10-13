@@ -44,10 +44,13 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: app-bundle
-          path: .
+          path: public
 
-      - name: Show dir listing BEFORE ACTION CHECKOUT
+      - name: Show dir listing all
         run: ls -la
+
+      - name: Show dir listing public
+        run: ls -la public
 
       - name: Docker Build
         run: docker build . --tag express-js-app:14.18
