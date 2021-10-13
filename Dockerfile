@@ -20,7 +20,7 @@ RUN ls -la
 COPY . .
 
 RUN echo AFTER COPY =================================================
-RUN ls -la public
+RUN ls -la
 
 # WORKDIR "/public"
 # EXPOSE 8181
