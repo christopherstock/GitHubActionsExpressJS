@@ -30,8 +30,37 @@ jobs:
         name: app-bundle
         path: public/app-bundle.js
 
+     - name: Show dir listing BEFORE ACTION CHECKOUT
+       run: ls -la
+
+     - name: Checkout
+       uses: actions/checkout@v2
+       with:
+         path: .github/actions/hello-world
+
+     - name: Show dir listing AFTER ACTION CHECKOUT
+       run: ls -la
+
+     - name: Download Production Build Artefact
+       uses: actions/download-artifact@v1
+       with:
+         name: app-bundle
+         path: .
+
+     - name: AFTER DOWNLOAD -- Show dir listing
+       run: ls -la
+
+     - name: Run Docker Container Deployment
+       id: hello
+       uses: ./.github/actions/hello-world
+     # Use the output from the `hello` step
+     - name: Get the output time
+       run: echo "The output time was ${{ steps.hello.outputs.time }}"
+
+
   docker-job:
     runs-on: ubuntu-latest
+    if: true == false
     needs: build
     name: Dockerize Production App
     steps:
