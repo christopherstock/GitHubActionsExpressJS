@@ -58,8 +58,11 @@ jobs:
     # Use the output from the `hello` step
 
 
-    - name: Sleep 10 seconds
-      run: sleep 10s
+    - name: Wait until container is up ..
+      run: docker wait express-js-app:14.18
+
+#    - name: Sleep 10 seconds
+#      run: sleep 10s
 
     - name: Send a cURL request to the Docker container
       run: curl -i -v 0.0.0.0:45678/user
