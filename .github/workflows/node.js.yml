@@ -77,10 +77,10 @@ jobs:
       run: sleep 10s
 
     - name: Send a cURL request to the Docker container
-      run: curl -i -v 0.0.0.0:45678/user
+      run: curl -i 0.0.0.0:45678/user
 
     - name: Stop the Docker container
-      run: docker stop ${{ env.container-name }}
+      run: docker stop express-js-app-container
 
     - name: Wait until container is down
       run: docker wait express-js-app-container
