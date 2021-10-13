@@ -69,8 +69,8 @@ jobs:
 #    - name: Wait until container is up ..
 #      run: docker wait express-js-app-container
 
-    - name: Sleep 10 seconds
-      run: sleep 10s
+    - name: Sleep 5 seconds
+      run: sleep 5s
 
     - name: Send a cURL request to the Docker container
       run: curl -i 0.0.0.0:45678/user
