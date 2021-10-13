@@ -2,4 +2,4 @@ name: 'Run Express.js in a Docker container'
 description: 'Runs Express.js in a Docker container'
 runs:
   using: 'docker'
-  image: '../../../Dockerfile'
+  image: 'Dockerfile'
