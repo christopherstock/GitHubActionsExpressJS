@@ -31,4 +31,5 @@ RUN ls -la
 # WORKDIR "/public"
 EXPOSE 8181
 
-CMD [ "node", "./public/app-bundle.js" ]
+# CMD [ "node", "./public/app-bundle.js" ]
+RUN nohup bash -c "node ./public/app-bundle.js &"

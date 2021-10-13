@@ -45,7 +45,11 @@ jobs:
 
       # run: echo "container-name=$( docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18 )" >> $GITHUB_ENV
 
-      run: docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18
+
+
+      run: docker run --name express-js-app-container --publish 45678:8181 --tty express-js-app:14.18
+      # run: docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18
+
 
 
     # - name: Show running Container Name
@@ -73,8 +77,8 @@ jobs:
 #    - name: Wait until container is up ..
 #      run: docker wait express-js-app-container
 
-    - name: Sleep 10 seconds
-      run: sleep 10s
+    # - name: Sleep 10 seconds
+    #   run: sleep 10s
 
     - name: Send a cURL request to the Docker container
       run: curl -i 0.0.0.0:45678/user
@@ -117,7 +121,7 @@ jobs:
        run: echo "The output time was ${{ steps.hello.outputs.time }}"
 
   run-unit-tests:
-    name: Unit and Integration Tests
+    name: Unit Tests
     needs: build
     runs-on: ${{ matrix.os }}
     strategy:
@@ -178,7 +182,7 @@ jobs:
         path: public/linter-results.xml
 
   generate-jsdoc:
-    name: Generate Sourcecode Documentation
+    name: Generate Documentation
     needs: [run-unit-tests, run-code-inspection]
     runs-on: ${{ matrix.os }}
     strategy:
