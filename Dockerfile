@@ -1,8 +1,8 @@
-# FROM node:14
+FROM node:14
 
 
 # Container image that runs your code
-FROM alpine:3.10
+# FROM alpine:3.10
 
 
 # Create app directory
@@ -27,6 +27,7 @@ COPY . .
 RUN echo AFTER COPY =================================================
 RUN ls -la
 
+
 # WORKDIR "/public"
-# EXPOSE 8181
-# CMD [ "node", "app-bundle.js" ]
+EXPOSE 8181
+CMD [ "node", "./public/app-bundle.js" ]
