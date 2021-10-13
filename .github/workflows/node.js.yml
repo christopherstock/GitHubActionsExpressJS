@@ -68,8 +68,8 @@ jobs:
     # Use the output from the `hello` step
 
 
-    - name: Wait until container is up ..
-      run: docker wait express-js-app:14.18
+    - name: Wait until container is up
+      run: docker wait ${{ env.container-name }}
 
 #    - name: Sleep 10 seconds
 #      run: sleep 10s
@@ -78,7 +78,7 @@ jobs:
       run: curl -i -v 0.0.0.0:45678/user
 
     - name: Stop the Docker container
-      run: docker stop $(docker ps -q --filter ancestor=express-js-app:14.18 )
+      run: docker stop ${{ env.container-name }}
 
   docker-job:
     runs-on: ubuntu-latest
