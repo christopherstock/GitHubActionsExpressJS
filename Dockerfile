@@ -21,8 +21,8 @@ RUN ls -la
 # RUN find / -print
 
 # RUN mkdir public
-# COPY public/* public/
-COPY . .
+COPY public/* public/
+# COPY . .
 
 RUN echo AFTER COPY =================================================
 RUN ls -la
