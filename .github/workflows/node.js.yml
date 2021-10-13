@@ -38,8 +38,11 @@ jobs:
     - name: Docker Build
       run: docker build . --tag express-js-app:14.18
 
+
     - name: Docker Run
-      run: docker run --detach --publish 45678:8181 --tty express-js-app:14.18
+      # run: docker run --detach --publish 45678:8181 --tty express-js-app:14.18
+      run: docker run --publish 45678:8181 --tty express-js-app:14.18
+
 
     - name: Show dir listing AFTER DOCKER RUN
       run: ls -la
