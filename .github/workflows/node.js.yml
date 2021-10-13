@@ -69,15 +69,15 @@ jobs:
 #    - name: Wait until container is up ..
 #      run: docker wait express-js-app-container
 
-#    - name: Sleep 5 seconds
-#      run: sleep 5s
+    - name: Sleep 5 seconds
+      run: sleep 5s
 
-    - name: Wait until Docker container is running
-      run: |
-        until [ "`docker inspect -f {{.State.Running}} express-js-app-container`"=="true" ]; do \
-          sleep 1.1; \
-          echo "Waiting till container [express-js-app-container] is running"; \
-        done;
+#    - name: Wait until Docker container is running
+#      run: |
+#        until [ "`docker inspect -f {{.State.Running}} express-js-app-container`"=="true" ]; do \
+#          sleep 1.1; \
+#          echo "Waiting till container [express-js-app-container] is running"; \
+#        done;
 
     - name: Send a cURL request to the Docker container
       run: curl --connect-timeout 5 -i 0.0.0.0:45678/user
