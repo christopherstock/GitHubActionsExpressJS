@@ -37,28 +37,30 @@ jobs:
     needs: build
     name: Dockerize Production App
     steps:
+      - name: Checkout Sourcecode
+        uses: actions/checkout@v2
 
-     - name: Download Production Build Artefact
-       uses: actions/download-artifact@v1
-       with:
-         name: app-bundle
-         path: .
+      - name: Download Production Build Artefact
+        uses: actions/download-artifact@v1
+        with:
+          name: app-bundle
+          path: .
 
-     - name: Show dir listing BEFORE ACTION CHECKOUT
-       run: ls -la
+      - name: Show dir listing BEFORE ACTION CHECKOUT
+        run: ls -la
 
-     - name: Docker Build
-       run: docker build . --tag express-js-app:14.18
-     - name: Docker Run
-       run: docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18
-     - name: Sleep 5 seconds
-       run: sleep 5s
-     - name: Send a cURL request to the Docker container
-       run: curl --connect-timeout 5 -i 0.0.0.0:45678/user
-     - name: Stop the Docker container
-       run: docker stop express-js-app-container
-     - name: Wait until container is down
-       run: docker wait express-js-app-container
+      - name: Docker Build
+        run: docker build . --tag express-js-app:14.18
+      - name: Docker Run
+        run: docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18
+      - name: Sleep 5 seconds
+        run: sleep 5s
+      - name: Send a cURL request to the Docker container
+        run: curl --connect-timeout 5 -i 0.0.0.0:45678/user
+      - name: Stop the Docker container
+        run: docker stop express-js-app-container
+      - name: Wait until container is down
+        run: docker wait express-js-app-container
 
   run-unit-tests:
     name: Unit Tests
