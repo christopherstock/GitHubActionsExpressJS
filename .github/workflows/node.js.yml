@@ -40,15 +40,7 @@ jobs:
 
 
     - name: Docker Run
-      # run: docker run --detach --publish 45678:8181 --tty express-js-app:14.18
-      # run: docker run --publish 45678:8181 --tty express-js-app:14.18
-
-      # run: echo "container-name=$( docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18 )" >> $GITHUB_ENV
-
-
-
-      run: docker run --name express-js-app-container --publish 45678:8181 --tty express-js-app:14.18
-      # run: docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18
+      run: docker run --name express-js-app-container --detach --publish 45678:8181 --tty express-js-app:14.18
 
 
 
@@ -77,8 +69,8 @@ jobs:
 #    - name: Wait until container is up ..
 #      run: docker wait express-js-app-container
 
-    # - name: Sleep 10 seconds
-    #   run: sleep 10s
+    - name: Sleep 5 seconds
+      run: sleep 5s
 
     - name: Send a cURL request to the Docker container
       run: curl -i 0.0.0.0:45678/user
