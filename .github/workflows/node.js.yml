@@ -68,8 +68,6 @@ jobs:
     steps:
     - name: Checkout Sourcecode
       uses: actions/checkout@v2
-    - name: Print a greeting
-      run: echo Hello everyone! We are executing all JEST tests here!
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -92,21 +90,14 @@ jobs:
   run-code-inspection:
     name: Code Inspection
     needs: build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node-version: [14.18] # [12.x, 13.x, 14.x, 15.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        os: [ubuntu-latest] # [ubuntu-latest, ubuntu-20.04, ubuntu-18.04]
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout Sourcecode
       uses: actions/checkout@v2
-    - name: Print a greeting
-      run: echo Hello everyone! We are now linting the code ..
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 14.18
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 14.18
         cache: 'npm'
     - run: npm install
     - name: Run ESLint Scan on app sourcecode
@@ -126,8 +117,6 @@ jobs:
     steps:
     - name: Checkout Sourcecode
       uses: actions/checkout@v2
-    - name: Print a greeting
-      run: echo Hello everyone! We are now generating JSDoc documentation for all JavaScript source codes ..
     - name: Use Node.js 14.18
       uses: actions/setup-node@v2
       with:
