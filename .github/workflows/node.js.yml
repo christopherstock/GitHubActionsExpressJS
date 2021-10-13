@@ -41,7 +41,7 @@ jobs:
     - name: Show dir listing AFTER ACTION CHECKOUT
       run: ls -la
 
-    - name: Download Production Build Artefact
+    - name: Download Production Build Artefact (useless..)
       uses: actions/download-artifact@v1
       with:
         name: app-bundle
@@ -54,9 +54,12 @@ jobs:
       id: hello
       uses: ./.github/actions/hello-world
     # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The output time was ${{ steps.hello.outputs.time }}"
 
+    - name: Query the Docker container?
+      run: echo "Time to QUERY the docker container?"
+
+    - name: Stop Docker container?
+      run: echo "Time to STOP the docker container?"
 
   docker-job:
     runs-on: ubuntu-latest
