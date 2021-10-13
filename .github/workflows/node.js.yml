@@ -73,7 +73,7 @@ jobs:
 #      run: sleep 5s
 
     - name: Send a cURL request to the Docker container
-      run: curl -i 0.0.0.0:45678/user
+      run: curl --connection-timeout 5 -i 0.0.0.0:45678/user
 
     - name: Stop the Docker container
       run: docker stop express-js-app-container
