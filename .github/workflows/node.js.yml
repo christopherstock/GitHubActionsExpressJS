@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  build:
+  build-production:
     name: Build Production App
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +33,7 @@ jobs:
 
   docker-job:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-production
     name: Dockerize Production App
     steps:
       - name: Checkout Sourcecode
@@ -58,7 +58,7 @@ jobs:
 
   run-unit-tests:
     name: Unit Tests
-    needs: build
+    needs: build-production
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -89,7 +89,7 @@ jobs:
 
   run-code-inspection:
     name: Code Inspection
-    needs: build
+    needs: build-production
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Sourcecode
