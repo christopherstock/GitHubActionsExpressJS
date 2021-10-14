@@ -3,12 +3,12 @@
 
 const express = require('express');
 
-/** The host address to establish the Express.js server on. */
+/** Host address to establish the Express.js server on. */
 const HOST = '0.0.0.0';
-/** The port number to establish the Express.js server on. */
+/** Port number to establish the Express.js server on. */
 const PORT = 8181;
 
-/** The Express.js server instance. */
+/** Express.js server instance. */
 const server = express();
 
 server.get('/', (req, res) => {
@@ -25,5 +25,5 @@ server.get('/user', (req, res) => {
 
 console.log(`Start Express.js server on http://${HOST}:${PORT}`);
 
-// export listening express.JS server instance for outside modules
+// export listening express.JS server instance to outside modules
 module.exports = server.listen(PORT, HOST);
