@@ -152,6 +152,16 @@ jobs:
       with:
         name: jsdoc-sourcecode-documentation-v${{ env.release-version }}
         path: public/jsdoc-sourcecode-documentation-v${{ env.release-version }}
+    - name: Create GitHub Release
+      uses: ncipollo/release-action@v1
+      with:
+        name: Release v${{ env.release-version }}
+        tag: ${{ env.release-version }}
+        artifacts: 'public/app-bundle-v${{ env.release-version }}.js', 'public/jsdoc-sourcecode-documentation-v${{ env.release-version }}'
+        token: ${{ secrets.GITHUB_TOKEN }}
+        allowUpdates: true
+        omitBody: true
+        removeArtifacts: true
 
   docker-job:
     runs-on: ubuntu-latest
