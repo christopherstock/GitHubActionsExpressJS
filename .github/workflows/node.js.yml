@@ -156,6 +156,8 @@ jobs:
     needs: build-production
     name: Dockerize Production App
     steps:
+      - name: Checkout GitHub Repository
+        uses: actions/checkout@v2
       - name: Download Production Build Artefact
         uses: actions/download-artifact@v1
         with:
