@@ -133,10 +133,10 @@ jobs:
       run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
 
     - name: Show DIR listing ..
-      run: ls -la public"
+      run: ls -la public
 
     - name: Show DIR listing ..
-      run: ls -la public/jsdoc-sourcecode-documentation"
+      run: ls -la public/jsdoc-sourcecode-documentation
 
     - name: Rename Sourcecode Documentation Artefact by inserting release version
       run: mv "public/jsdoc-sourcecode-documentation" "public/jsdoc-sourcecode-documentation-v${{ env.release-version }}"
