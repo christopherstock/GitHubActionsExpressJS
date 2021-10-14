@@ -157,7 +157,7 @@ jobs:
       with:
         name: Release v${{ env.release-version }}
         tag: ${{ env.release-version }}
-        artifacts: 'public/app-bundle-v${{ env.release-version }}.js', 'public/jsdoc-sourcecode-documentation-v${{ env.release-version }}'
+        artifacts: 'public/app-bundle-v${{ env.release-version }}.js',
         token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
         omitBody: true
