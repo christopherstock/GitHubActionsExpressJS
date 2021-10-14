@@ -156,9 +156,9 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         name: Release v${{ env.release-version }}
-        tag: ${{ env.release-version }}
-        artifacts: 'public/app-bundle-v${{ env.release-version }}.js', 'public/jsdoc-sourcecode-documentation-v${{ env.release-version }}'
         token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ env.release-version }}
+        artifacts: 'public/app-bundle-v${{ env.release-version }}.js,public/jsdoc-sourcecode-documentation-v${{ env.release-version }}'
         allowUpdates: true
         omitBody: true
         removeArtifacts: true
