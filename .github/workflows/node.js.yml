@@ -129,12 +129,15 @@ jobs:
       uses: geekyeggo/delete-artifact@v1
       with:
         name: app-bundle
-    - name: Delete Sourcecode Documentation Artefact
-      uses: geekyeggo/delete-artifact@v1
-      with:
-        name: jsdoc-sourcecode-documentation
     - name: Rename Production Build Artefact by inserting release version
       run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
+
+    - name: Show DIR listing ..
+      run: ls -la public"
+
+    - name: Show DIR listing ..
+      run: ls -la public/jsdoc-sourcecode-documentation"
+
     - name: Rename Sourcecode Documentation Artefact by inserting release version
       run: mv "public/jsdoc-sourcecode-documentation" "public/jsdoc-sourcecode-documentation-v${{ env.release-version }}"
     - name: Upload Renamed Production Build Artefact
@@ -142,11 +145,6 @@ jobs:
       with:
         name: app-bundle-v${{ env.release-version }}
         path: public/app-bundle-v${{ env.release-version }}.js
-    - name: Upload Renamed Sourcecode Documentation Artefact
-      uses: actions/upload-artifact@v1
-      with:
-        name: jsdoc-sourcecode-documentation-v${{ env.release-version }}
-        path: public/jsdoc-sourcecode-documentation-v${{ env.release-version }}
     - name: Create GitHub Release
       uses: ncipollo/release-action@v1
       with:
