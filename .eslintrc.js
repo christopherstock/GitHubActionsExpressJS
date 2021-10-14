@@ -11,8 +11,8 @@ module.exports = {
     },
     rules: {
         'indent': ['error', 4],
-        'quotes': ['error', 'single'],
         'max-len': ['error', {'code': 120}],
+        'quotes': ['error', 'single'],
         'no-trailing-spaces': ['error'],
         'space-before-function-paren': ['error'],
         'array-bracket-spacing': ['error'],
