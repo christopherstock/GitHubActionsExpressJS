@@ -111,11 +111,6 @@ jobs:
     needs: generate-jsdoc
     runs-on: ubuntu-latest
     steps:
-    - name: Use Node.js 14.18
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14.18
-        cache: 'npm'
     - name: Pick Release Version from git tag
       run: echo "release-version=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     - name: Print out picked Release Version from git tag
