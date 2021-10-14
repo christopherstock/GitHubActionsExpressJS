@@ -1,4 +1,4 @@
-module.exports = ( env, argv ) => {
+module.exports = (env, argv) => {
     let config = {
         entry: './src/server.js',
         output: {
@@ -14,11 +14,11 @@ module.exports = ( env, argv ) => {
         target: 'node'
     };
 
-    if ( argv.mode === 'development' ) {
+    if (argv.mode === 'development') {
         config.devtool = 'source-map';
     }
 
-    if ( argv.mode === 'production' ) {
+    if (argv.mode === 'production') {
         config.optimization = {
             minimize: true
         };
