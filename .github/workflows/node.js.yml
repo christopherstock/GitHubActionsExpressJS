@@ -141,7 +141,7 @@ jobs:
     - name: Rename Production Build Artefact by inserting release version
       run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
     - name: Rename Sourcecode Documentation Artefact by inserting release version
-      run: mv "public/jsdoc-sourcecode-documentation" "public/jsdoc-sourcecode-documentation-v${{ env.release-version }}.js"
+      run: mv "public/jsdoc-sourcecode-documentation" "public/jsdoc-sourcecode-documentation-v${{ env.release-version }}"
     - name: Upload Renamed Production Build Artefact
       uses: actions/upload-artifact@v1
       with:
@@ -151,13 +151,13 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: jsdoc-sourcecode-documentation-v${{ env.release-version }}
-        path: public/jsdoc-sourcecode-documentation-v${{ env.release-version }}.js
+        path: public/jsdoc-sourcecode-documentation-v${{ env.release-version }}
     - name: Create GitHub Release
       uses: ncipollo/release-action@v1
       with:
         name: Release v${{ env.release-version }}
         tag: ${{ env.release-version }}
-        artifacts: 'public/app-bundle-v${{ env.release-version }}.js', 'public/jsdoc-sourcecode-documentation-v${{ env.release-version }}.js'
+        artifacts: 'public/app-bundle-v${{ env.release-version }}.js', 'public/jsdoc-sourcecode-documentation-v${{ env.release-version }}'
         token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
         omitBody: true
