@@ -120,22 +120,28 @@ jobs:
       with:
         name: app-bundle
         path: public
+    - name: Create local directory to extract sourcecode documentation
+      run: mkdir public/jsdoc-sourcecode-documentation
     - name: Download Sourcecode Documentation
       uses: actions/download-artifact@v1
       with:
         name: jsdoc-sourcecode-documentation
-        path: public
+        path: public/jsdoc-sourcecode-documentation
     - name: Delete Production Build Artefact
       uses: geekyeggo/delete-artifact@v1
       with:
         name: app-bundle
+    - name: Delete Sourcecode Documentation Artefact
+      uses: geekyeggo/delete-artifact@v1
+      with:
+        name: jsdoc-sourcecode-documentation
     - name: Rename Production Build Artefact by inserting release version
       run: mv "public/app-bundle.js" "public/app-bundle-v${{ env.release-version }}.js"
 
-    - name: Show DIR listing ..
+    - name: Show DIR listing .. 1
       run: ls -la public
 
-    - name: Show DIR listing ..
+    - name: Show DIR listing .. 2
       run: ls -la public/jsdoc-sourcecode-documentation
 
     - name: Rename Sourcecode Documentation Artefact by inserting release version
@@ -145,6 +151,11 @@ jobs:
       with:
         name: app-bundle-v${{ env.release-version }}
         path: public/app-bundle-v${{ env.release-version }}.js
+    - name: Upload Renamed Sourcecode Documentation Artefact
+      uses: actions/upload-artifact@v1
+      with:
+        name: jsdoc-sourcecode-documentation-v${{ env.release-version }}
+        path: public/jsdoc-sourcecode-documentation-v${{ env.release-version }}
     - name: Create GitHub Release
       uses: ncipollo/release-action@v1
       with:
